@@ -1,0 +1,44 @@
+﻿@using CaseManagerLibrary.Data.UOW
+@using CaseManagerLibrary.Utility
+@inject IUnitOfWork UnitOfWork
+
+<div class="card-lab p-3 mb-2">
+    <div class="d-flex justify-content-between">
+        <div class="card-label">@Issue.IssueNumber</div>
+        <div>
+            @if (Issue.Status == SD.StatusPending)
+            {
+                <div class="card-body-select select-blue">@Issue.Status</div>
+            } 
+            else if (Issue.Status == SD.StatusInProcess)
+            {
+                <div class="card-body-select select-orange">@Issue.Status</div>
+            } 
+            else if (Issue.Status == SD.StatusCancelled)
+            {
+                <div class="card-body-select select-red">@Issue.Status</div>
+            } 
+            else if (Issue.Status == SD.StatusFinished)
+            {
+                <div class="card-body-select select-green">@Issue.Status</div>
+            }
+        </div>
+    </div>
+    <div class="card-body-lab mt-2">@laboratory.LaboratoryName</div>
+    <div class="card-body-specialist">@specialist.FullName</div>
+</div>
+
+@code {
+    [Parameter]
+    public Issue Issue { get; set; }
+
+    private Specialist specialist = new();
+
+    private Laboratory laboratory = new();
+
+    protected override async Task OnParametersSetAsync()
+    {
+        specialist = await UnitOfWork.SpecialistRepository.GetSpecialistByIssueId(Issue.Id);
+        laboratory = await UnitOfWork.LaboratoryRepository.GetLaboratoryNameByLaboratoryId(specialist.LaboratoryId);
+    }
+}

@@ -1,0 +1,38 @@
+﻿@page "/setuproles"
+@using Microsoft.AspNetCore.Identity
+
+@inject RoleManager<IdentityRole> roleManager
+@inject UserManager<IdentityUser> userManager
+@inject IConfiguration config
+
+<h3>Roles setup</h3>
+
+@code {
+    protected override async Task OnParametersSetAsync()
+    {
+        await SetUpAuth();
+    }
+
+    private async Task SetUpAuth()
+    {
+        string[] roles = { "Administrator" };
+
+        foreach (var role in roles)
+        {
+            var roleExists = await roleManager.RoleExistsAsync(role);
+
+            if (roleExists == false)
+            {
+                await roleManager.CreateAsync(new IdentityRole(role));
+            }
+        }
+
+        var user = await userManager.FindByEmailAsync(config.GetValue<string>("AdminUser"));
+
+        if (user != null)
+        {
+            await userManager.AddToRoleAsync(user, "Administrator");
+        }
+    }
+}
+

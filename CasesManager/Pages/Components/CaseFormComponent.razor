@@ -1,0 +1,97 @@
+﻿@page "/caseform/{PreviousPage}"
+@page "/editcase/{PreviousPage}/{id:int}"
+@using CaseManagerLibrary.Models.IModels
+@using CaseManagerLibrary.Data.UOW
+@inject IUnitOfWork UnitOfWork
+@inject NavigationManager navigation
+
+<div class="container col-md-6 mt-5">
+    @if (Id != 0)
+    {
+        <h3 class="mt-5 mb-5">Edytuj spraw</h3>
+    }
+    else
+    {
+        <h3 class="mt-5 mb-5">Nowa sprawa</h3> 
+    }
+    <h4 class="mt-5 mb-5">Informacje ogólne</h4>
+    <EditForm Model="@newCase" OnValidSubmit="HandleValidSubmit">
+        <DataAnnotationsValidator/>
+        <ValidationSummary/>
+        <div class="form-group mb-2">
+            <label>Numer Zlecenia</label>
+            <InputText @bind-Value="@newCase.CaseNumber" class="form-control"></InputText>
+        </div>
+        <div class="form-group mb-2">
+            <label>Zleceniodawca</label>
+            <InputText @bind-Value="@newCase.Principal" class="form-control"></InputText>
+        </div>
+        <div class="form-group mb-2">
+            <label></label>
+            <InputDate @bind-Value="@newCase.DateOfReceipte" class="form-control"></InputDate>
+        </div>
+        <div class="d-flex justify-content-between mt-5">
+            @if (Id != 0)
+            {
+                <div>
+                    <button class="btn button-secondary-idle-delete" @onclick="HandleDeleteButton">Usuń zlecenie</button>
+                </div>
+            }
+            <div>
+                <div class="btn button-secondary-idle" @onclick="HandleCancelButton">Anuluj</div>
+                @if (Id != 0)
+                {
+                    <button class="btn button-primary-idle" type="submit">Edytuj zlecenie</button>
+                }
+                else
+                {
+                    <button class="btn button-primary-idle" type="submit">Dodaj zlecenie</button>
+                }
+            </div>
+        </div>
+    </EditForm>
+</div>
+
+@code{
+    [Parameter]
+    public int Id { get; set; }
+    
+    [Parameter]
+    public string PreviousPage { get; set; }
+    
+    private ICase newCase = new Case();
+
+    protected override async Task OnParametersSetAsync()
+    {
+        if (Id != 0)
+        {
+            newCase = await UnitOfWork.CaseRepository.GetCaseById(Id); 
+        }
+    }
+
+    private async Task HandleValidSubmit()
+    {
+        if (Id != 0)
+        {
+            await UnitOfWork.CaseRepository.UpdateCase(newCase);
+            navigation.NavigateTo($"{PreviousPage}");
+        }
+        else
+        {
+            await UnitOfWork.CaseRepository.AddNewCase(newCase);
+            newCase = new Case();
+            navigation.NavigateTo($"{PreviousPage}");
+        }
+    }
+    
+    private void HandleCancelButton()
+    {
+        navigation.NavigateTo($"{PreviousPage}");
+    }
+    
+    private async Task HandleDeleteButton()
+    {
+        await UnitOfWork.CaseRepository.DeleteCase(Id);
+        navigation.NavigateTo($"{PreviousPage}");
+    }
+}

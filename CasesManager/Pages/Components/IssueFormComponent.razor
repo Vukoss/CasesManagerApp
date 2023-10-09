@@ -1,0 +1,123 @@
+﻿@page "/issueform/{PreviousPage}/{caseId:int}"
+@page "/editissue/{PreviousPage}/{issueId:int}/{caseId:int}"
+@using CaseManagerLibrary.Models.IModels
+@using CaseManagerLibrary.Utility
+@using CaseManagerLibrary.Data.UOW
+@inject IUnitOfWork UnitOfWork
+@inject NavigationManager navigation
+
+<div class="container col-6 mt-5">
+    <EditForm Model="@issue" OnValidSubmit="HandleValidSubmit">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+        <div class="form-group">
+            <label>Numer Sprawy</label>
+            <InputText @bind-Value="issue.IssueNumber" class="form-control"></InputText>
+        </div>
+        <div class="form-group">
+            <label>Specjalista</label>
+            <InputSelect @bind-Value="issue.SpecialistId" class="form-control">
+                <option disabled selected hidden value="">--wybierz specjalistę--</option>
+                @foreach (var s in specialists)
+                {
+                    if (issues.Count == 0)
+                    {
+                        <option value="@s.Id">@s.FirstName @s.LastName</option>
+                    }
+                    else
+                    {
+                        if (!CheckIfIssuesAlreadyHaveSpecialistId(s.Id))
+                        {
+                            <option value="@s.Id">@s.FirstName @s.LastName</option>
+                        }
+                    }
+                }
+            </InputSelect>
+        </div>
+        <div class="form-group">
+            <label>Status</label>
+            <InputSelect @bind-Value="issue.Status" class="form-control">
+                <option value=@SD.StatusPending>@SD.StatusPending</option>
+                <option value=@SD.StatusInProcess>@SD.StatusInProcess</option>
+                <option value=@SD.StatusCancelled>@SD.StatusCancelled</option>
+                <option value=@SD.StatusFinished>@SD.StatusFinished</option>
+            </InputSelect>
+        </div>
+        <div class="d-flex justify-content-between mt-5">
+            @if (issueId != 0)
+            {
+                <div>
+                    <button class="btn button-secondary-idle-delete" @onclick="HandleDeleteButton">Usuń sprawę</button>
+                </div>
+            }
+            <div>
+                <div class="btn button-secondary-idle" @onclick="HandleCancelButton">Anuluj</div>
+                @if (issueId != 0)
+                {
+                    <button class="btn button-primary-idle" type="submit">Edytuj sprawę</button>
+                }
+                else
+                {
+                    <button class="btn button-primary-idle" type="submit">Dodaj sprawę</button>
+                }
+            </div>
+        </div>
+    </EditForm>
+</div>
+
+@code {
+    [Parameter]
+    public int caseId { get; set; }
+    
+    [Parameter]
+    public int issueId { get; set; }
+    
+    [Parameter]
+    public string PreviousPage { get; set; }
+
+    private List<Specialist> specialists = new();
+    private List<Issue> issues = new();
+    private IIssue issue = new DisplayIssueModel();
+    
+    protected override async Task OnParametersSetAsync()
+    {
+        if (issueId != 0)
+        {
+            issue = await UnitOfWork.IssueRepository.GetIssueById(issueId);
+        }
+        specialists = await UnitOfWork.SpecialistRepository.GetAllSpecialists();
+        issues = await UnitOfWork.IssueRepository.GetAllCaseIssues(caseId);
+    }
+    
+    private bool CheckIfIssuesAlreadyHaveSpecialistId(string id)
+    {
+        var hasMatchingIssue = issues.Any(i => i.SpecialistId == id);
+        return hasMatchingIssue;
+    }
+
+    private async Task HandleValidSubmit()
+    {
+        if (issueId != 0)
+        {
+            await UnitOfWork.IssueRepository.UpdateIssue(issue);
+            navigation.NavigateTo(PreviousPage);
+        }
+        else
+        {
+            issue.CaseId = caseId;
+            await UnitOfWork.IssueRepository.AddNewIssue(issue);
+            navigation.NavigateTo(PreviousPage);
+        }
+    }
+
+    private async Task HandleDeleteButton()
+    {
+        await UnitOfWork.IssueRepository.DeleteIssue(issueId);
+        navigation.NavigateTo(PreviousPage);
+    }
+
+    private void HandleCancelButton()
+    {
+        navigation.NavigateTo(PreviousPage);
+    }
+}

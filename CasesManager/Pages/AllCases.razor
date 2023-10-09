@@ -1,0 +1,55 @@
+﻿@page "/allcases"
+@using CaseManagerLibrary.Models.IModels
+@using CaseManagerLibrary.Data.UOW
+@inject IUnitOfWork UnitOfWork
+@inject NavigationManager navigation
+@attribute [Authorize]
+
+<AuthorizeView Roles="Administrator, User">
+    <Authorized>
+        <div class="container mt-5">
+            <div class="d-flex justify-content-between mb-5">
+                <div>
+                    <h3>Zlecenia w toku</h3>
+                    <p>W sumie: @Cases.Count()</p>
+                </div>
+                <div>
+                    <button class="btn button-primary-idle" @onclick="HandleButtonNewCase">Dodaje nowe zlecenie</button>
+                </div>
+            </div>
+            <div>
+                @if (Cases == null)
+                {
+                    <div class="text-center">
+                        <p>Brak spraw!</p>
+                    </div>
+                }
+                else
+                {
+                    <div class="row gap-3 justify-content-start">
+                        @foreach (var c in Cases)
+                        {
+                            <CardComponent Case="c" PreviousPage="/allcases"></CardComponent>
+                        }
+                    </div>
+                }
+            </div>
+        </div>
+    </Authorized>
+</AuthorizeView>
+
+@code{
+    private List<ICase> Cases = new();
+
+    private string PreviousPage = "allcases";
+
+    private void HandleButtonNewCase()
+    {
+        navigation.NavigateTo($"/caseform/{PreviousPage}");
+    }
+
+    protected override async Task OnParametersSetAsync()
+    {
+        Cases = await UnitOfWork.CaseRepository.GetAllCases();
+    }
+}

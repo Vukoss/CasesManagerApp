@@ -1,0 +1,32 @@
+﻿<Properties StartupConfiguration="{CC0A534F-4DBB-4247-AA3C-B80F0E5CEFD1}|https">
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.Workbench ActiveDocument="CasesManager/Pages/Components/CaseFormComponent.razor">
+    <Files>
+      <File FileName="CasesManager/Pages/Components/CaseFormComponent.razor" Line="42" Column="6" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="CasesManagerBlazor" expanded="True">
+            <Node name="CaseManagerLibrary" expanded="True">
+              <Node name="DataAccess" expanded="True" />
+            </Node>
+            <Node name="CasesManager" expanded="True">
+              <Node name="Pages" expanded="True">
+                <Node name="Components" expanded="True">
+                  <Node name="CaseFormComponent.razor" selected="True" />
+                </Node>
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.CasesManager PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+</Properties>

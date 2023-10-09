@@ -1,0 +1,14 @@
+/Users/patryk/Desktop/NET/CasesManagerBlazor/CaseManagerLibrary/bin/Release/net7.0/CaseManagerLibrary.deps.json
+/Users/patryk/Desktop/NET/CasesManagerBlazor/CaseManagerLibrary/bin/Release/net7.0/CaseManagerLibrary.runtimeconfig.json
+/Users/patryk/Desktop/NET/CasesManagerBlazor/CaseManagerLibrary/bin/Release/net7.0/CaseManagerLibrary.dll
+/Users/patryk/Desktop/NET/CasesManagerBlazor/CaseManagerLibrary/bin/Release/net7.0/CaseManagerLibrary.pdb
+/Users/patryk/Desktop/NET/CasesManagerBlazor/CaseManagerLibrary/obj/Release/net7.0/CaseManagerLibrary.csproj.AssemblyReference.cache
+/Users/patryk/Desktop/NET/CasesManagerBlazor/CaseManagerLibrary/obj/Release/net7.0/CaseManagerLibrary.GeneratedMSBuildEditorConfig.editorconfig
+/Users/patryk/Desktop/NET/CasesManagerBlazor/CaseManagerLibrary/obj/Release/net7.0/CaseManagerLibrary.AssemblyInfoInputs.cache
+/Users/patryk/Desktop/NET/CasesManagerBlazor/CaseManagerLibrary/obj/Release/net7.0/CaseManagerLibrary.AssemblyInfo.cs
+/Users/patryk/Desktop/NET/CasesManagerBlazor/CaseManagerLibrary/obj/Release/net7.0/CaseManagerLibrary.csproj.CoreCompileInputs.cache
+/Users/patryk/Desktop/NET/CasesManagerBlazor/CaseManagerLibrary/obj/Release/net7.0/CaseManagerLibrary.dll
+/Users/patryk/Desktop/NET/CasesManagerBlazor/CaseManagerLibrary/obj/Release/net7.0/refint/CaseManagerLibrary.dll
+/Users/patryk/Desktop/NET/CasesManagerBlazor/CaseManagerLibrary/obj/Release/net7.0/CaseManagerLibrary.pdb
+/Users/patryk/Desktop/NET/CasesManagerBlazor/CaseManagerLibrary/obj/Release/net7.0/CaseManagerLibrary.genruntimeconfig.cache
+/Users/patryk/Desktop/NET/CasesManagerBlazor/CaseManagerLibrary/obj/Release/net7.0/ref/CaseManagerLibrary.dll

@@ -1,0 +1,96 @@
+﻿@page "/"
+@page "/index"
+@using CaseManagerLibrary.Models.IModels
+@using CaseManagerLibrary.Data.UOW
+@using System.Security.Claims
+@inject AuthenticationStateProvider AuthenticationStateProvider
+@inject IUnitOfWork UnitOfWork
+@inject NavigationManager navigation
+
+<AuthorizeView Roles="Administrator, User">
+    <Authorized>
+        <div class="container mt-5 mb-5">
+            <div class="d-flex justify-content-between align-items-center">
+                <h3>Cześć, Patryk!</h3>
+                <button class="btn button-primary-idle" @onclick="HandleButtonNewCase">Dodaje nowe zlecenie</button>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-7 p-5" style="background-color: #F6F8FB; min-height:600px;">
+                    <div class="d-flex justify-content-between align-items-top mb-5">
+                        <div>
+                            <h4>Sprawy podpięte do ciebie</h4>
+                            <p>W sumie: @Cases.Count()</p>
+                        </div>
+                        <div>
+                            <a href="/allcases">Wszystkie zlecenia w realizacji -></a>
+                        </div>
+                    </div>
+                    <div>
+                        @if (Cases.Count() == 0)
+                        {
+                            <p>Nie masz przypisanych spraw!</p>
+                        }
+                        else if (Cases.Count() > 0 && Cases.Count() < 3)
+                        {
+                            <div class="d-flex justify-content-center gap-2">
+                                @foreach (var c in Cases)
+                                {
+                                    <CardComponent Case="c" PreviousPage="/index"></CardComponent>
+                                }
+                            </div>
+                        }
+                        else if (Cases.Count() >= 3)
+                        {
+                            <MudCarousel Class="mad-width-full" Style="height:600px;display:flex;" ShowArrows="@arrows" ShowBullets="@bullets" EnableSwipeGesture="@enableSwipeGesture" AutoCycle="@autocycle" TData="object">
+                                @foreach (var c in Cases)
+                                {
+                                    <MudCarouselItem Transition="transition">
+                                        <div style="height:600px;" class="d-flex justify-content-center align-items-center">
+                                            <CardComponent Case="c" PreviousPage="/index"></CardComponent>
+                                        </div>
+                                    </MudCarouselItem>
+                                }
+                            </MudCarousel>
+                        }
+                    </div>
+                </div>
+                <div class="col-5">
+        
+                </div>
+            </div>
+        </div>
+    </Authorized>
+</AuthorizeView>
+
+
+@code{
+    private List<ICase> Cases = new();
+    
+    private AuthenticationState authenticationState;
+
+        private const string PreviousPage = "index";
+
+    protected override async Task OnInitializedAsync()
+    {
+        authenticationState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+    }
+
+    protected override async Task OnParametersSetAsync()
+    {
+        Cases = await UnitOfWork.CaseRepository.GetAllSpecialistsCases(authenticationState.User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
+    }
+
+    private void HandleButtonNewCase()
+    {
+        navigation.NavigateTo($"/caseform/{PreviousPage}");
+    }
+
+    //carousel
+    private bool arrows = true;
+    private bool bullets = true;
+    private bool enableSwipeGesture = true;
+    private bool autocycle = false;
+    private Transition transition = Transition.Slide;
+}

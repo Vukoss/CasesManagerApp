@@ -1,0 +1,71 @@
+﻿@using CaseManagerLibrary.Models.IModels
+@using CaseManagerLibrary.Data.UOW
+@inject IUnitOfWork UnitOfWork
+@inject NavigationManager navigation
+
+<div class="card p-2 mb-4" style="width:306px;">
+    <div class="card-header" style="background-color:white;">
+        <div class="d-flex justify-content-between mb-1">
+            <div>
+                <p class="card-label">Numer Zlecenia</p>
+                <p>@Case.CaseNumber</p>
+            </div>
+            <button class="button-idle-add">
+                <span class="align-middle oi oi-plus" @onclick="newIssueButtonHandler"></span>
+            </button>
+        </div>
+        <div class="d-flex justify-content-between">
+            <div>
+                <p class="card-label">Zleceniodawca</p>
+                <p>@Case.Principal</p>
+            </div>
+            <div>
+                <p class="card-label">Data wpływu</p>
+                <p>@Case.DateOfReceipte.ToShortDateString()</p>
+            </div>
+        </div>
+    </div>
+    <div class="card-body scroll" style="min-height:150px;">
+        @foreach (var i in issues)
+        {
+            int id = i.Id;
+            <div @onclick="() => editIssueButtonHandler(id)">
+                <IssueComponent Issue="i"></IssueComponent>
+            </div>
+        }
+    </div>
+    <div class="card-footer text-center">
+        <div class="link" @onclick="editCaseButtonHandler">Edit</div>
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public ICase Case { get; set; }
+
+    [Parameter]
+    public string PreviousPage { get; set; }
+
+    private List<Issue> issues = new();
+
+    protected override async Task OnParametersSetAsync()
+    {
+        issues = await UnitOfWork.IssueRepository.GetAllCaseIssues(Case.Id);
+    }
+
+    private void editIssueButtonHandler(int issueId)
+    {
+        navigation.NavigateTo($"/editissue/{PreviousPage}/{issueId}/{Case.Id}");
+    }
+
+    private void newIssueButtonHandler()
+    {
+        navigation.NavigateTo($"/issueform/{PreviousPage}/{Case.Id}");
+    }
+
+    private void editCaseButtonHandler()
+    {
+        navigation.NavigateTo($"/editcase/{PreviousPage}/{Case.Id}");
+    }
+}
+

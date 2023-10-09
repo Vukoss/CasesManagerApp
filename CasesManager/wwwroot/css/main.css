@@ -1,0 +1,254 @@
+﻿html {
+    font-size: 14px;
+}
+
+/*@media (min-width: 768px) {
+    html {
+    }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+    font-family: 'Inter', sans-serif;
+}*/
+
+h1 {
+    font-size: 40px;
+}
+
+h2 {
+    font-size: 36px;
+}
+
+h3 {
+    font-size: 32px;
+}
+
+h4 {
+    font-size: 24px;
+}
+
+h5 {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+h6 {
+    font-size: 16px;
+}
+
+.scroll {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+/*OGÓLNE*/
+
+.link {
+    font-size: 14px;
+    color: #0A295A;
+    transition: color .3s;
+    cursor: pointer;
+}
+
+    .link:hover {
+        color: #1A5ABF;
+    }
+
+/*BUTTONY*/
+
+.button-primary-idle {
+    color: white;
+    background-color: #0A295A;
+    padding: 12px 20px;
+    transition: background-color .3s, box-shadow .3s;
+}
+
+    .button-primary-idle:hover {
+        background-color: #0E397B;
+        color: white;
+        box-shadow: 0px 4px 15px rgba(10, 41, 90, 0.4);
+    }
+
+.button-idle-add {
+    color: white;
+    background-color: #0A295A;
+    height: 40px;
+    padding: 8px 12px;
+    transition: background-color .3s, box-shadow .3s;
+}
+
+    .button-idle-add:hover {
+        background-color: #0E397B;
+        color: white;
+        box-shadow: 0px 4px 15px rgba(10, 41, 90, 0.4);
+    }
+
+.button-secondary-idle {
+    color: #0A295A;
+    padding: 12px 20px;
+    margin-right: 12px;
+    background-color: #FFFFFF;
+    border: 1px solid #0A295A;
+    transition: background-color .3s, box-shadow .3s;
+}
+
+    .button-secondary-idle:hover {
+        background-color: #0E397B;
+        color: #FFFFFF;
+        box-shadow: 0px 4px 15px rgba(10, 41, 90, 0.4);
+    }
+
+.button-secondary-idle-delete {
+    color: #D62D2B;
+    padding: 12px 20px;
+    margin-right: 12px;
+    background-color: #FFFFFF;
+    border: 1px solid #D62D2B;
+    transition: background-color .3s, box-shadow .3s;
+}
+
+    .button-secondary-idle-delete:hover {
+        background-color: #D62D2B;
+        color: #FFFFFF;
+        box-shadow: 0px 4px 15px rgba(10, 41, 90, 0.4);
+    }
+
+/*FISZKA*/
+.card-label {
+    font-size: 12px;
+    color: #465E85;
+}
+
+.card-input {
+    font-size: 14px;
+    color: black;
+}
+
+.card-body-specialist {
+    font-size: 12px;
+    margin: 0;
+}
+
+.card-issueAndSelect {
+    margin-bottom: -10px;
+}
+
+.card-body-lab {
+    margin: 0;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.card-body-select {
+    border: none;
+    border-radius: 8px;
+    padding: 0px 10px;
+    height: 19px;
+    color: white;
+    font-size: 12px;
+}
+
+.card-footer {
+    background-color: white;
+    border: none;
+}
+
+.select-blue {
+    background-color: #1A5ABF;
+}
+
+.select-orange {
+    background-color: #F2994A;
+}
+
+.select-green {
+    background-color: #219653;
+}
+
+.select-red {
+    background-color: #b02a37;
+}
+
+.card {
+    background-color: #FFFFFF;
+    box-shadow: 0px 4px 15px rgba(10, 41, 90, 0.2);
+    border-radius: 12px;
+    transition: box-shadow .3s;
+    overflow: hidden;
+    min-height: 470px;
+    max-height: 470px;
+}
+
+    .card:hover {
+        box-shadow: 0px 4px 15px rgba(10, 41, 90, 0.5);
+    }
+
+.card-lab {
+    background: #F6F8FB;
+    border-radius: 8px;
+    transition: background-color .3s;
+    cursor: pointer;
+}
+
+    .card-lab:hover {
+        background-color: #EEF2F9;
+    }
+
+/*MAIN SECTION*/
+
+.main-section {
+    background-color: #F6F8FB;
+    border-radius: 15px;
+}
+
+.main-section-text-standard {
+    font-size: 14px;
+    color: black;
+}
+
+/*NAWIGACJA*/
+
+nav {
+    height: 72px;
+    background-color: #0A295A;
+}
+
+.nav-link {
+    color: white;
+    height: 100%;
+    margin: 0 15px;
+    padding: 16px 0px;
+    transition: background-color .3s;
+    border-radius: 12px;
+}
+
+.navbar-brand {
+    color: white;
+}
+
+.nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+    color: white;
+}
+
+/*LAB FORM*/
+.add-lab-form-styles {
+    margin-top: 12px;
+    background-color: lightgrey;
+    padding: 24px;
+}
+
+.validate {
+    border: solid 3px red;
+    background-color: red;
+}
