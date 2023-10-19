@@ -4452,7 +4452,9 @@
         "framework": ".NETCoreApp,Version=v7.0",
         "dependencies": {
           "Dapper": "2.0.123",
-          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "7.0.5",
+          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "7.0.11",
+          "Microsoft.AspNetCore.Identity.UI": "7.0.11",
+          "Microsoft.VisualStudio.Web.CodeGeneration.Design": "7.0.10",
           "Npgsql.EntityFrameworkCore.PostgreSQL": "7.0.4"
         },
         "compile": {

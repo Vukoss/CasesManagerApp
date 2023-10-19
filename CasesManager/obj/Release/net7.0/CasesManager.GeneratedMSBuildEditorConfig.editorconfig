@@ -36,6 +36,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQ29tcG9uZW50cy9Db21tZW50Rm9ybUNvbXBvbmVudC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
+[/Users/patryk/Desktop/NET/CasesManagerBlazor/CasesManager/Pages/Components/ConfirmationModal.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQ29tcG9uZW50cy9Db25maXJtYXRpb25Nb2RhbC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
 [/Users/patryk/Desktop/NET/CasesManagerBlazor/CasesManager/Pages/Components/IssueComponent.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQ29tcG9uZW50cy9Jc3N1ZUNvbXBvbmVudC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 

@@ -47,7 +47,7 @@
             @if (issueId != 0)
             {
                 <div>
-                    <button class="btn button-secondary-idle-delete" @onclick="HandleDeleteButton">Usuń sprawę</button>
+                    <a class="btn button-secondary-idle-delete" @onclick="ToggleModal">Usuń sprawę</a>
                 </div>
             }
             <div>
@@ -65,6 +65,11 @@
     </EditForm>
 </div>
 
+@if (showModal)
+{
+    <ConfirmationModal NameOfElementToDelete="sprawę" Confirm="HandleDeleteButton" Cancel="ToggleModal"></ConfirmationModal>
+}
+
 @code {
     [Parameter]
     public int caseId { get; set; }
@@ -76,8 +81,12 @@
     public string PreviousPage { get; set; }
 
     private List<Specialist> specialists = new();
+    
     private List<Issue> issues = new();
+    
     private IIssue issue = new DisplayIssueModel();
+    
+    private bool showModal = false;
     
     protected override async Task OnParametersSetAsync()
     {
@@ -119,5 +128,10 @@
     private void HandleCancelButton()
     {
         navigation.NavigateTo(PreviousPage);
+    }
+    
+    private void ToggleModal()
+    {
+        showModal = !showModal;
     }
 }

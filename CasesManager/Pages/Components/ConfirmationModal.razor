@@ -1,0 +1,30 @@
+<div class="overlay">
+    <div class="popup">
+        <p>Czy napewno chcesz usunąć @NameOfElementToDelete?</p>
+        <div class="d-flex justify-content-end">
+            <button class="btn button-secondary-idle" @onclick="cancelFunction">Anuluj</button>
+            <button class="btn button-primary-idle" @onclick="confirmFunction">Zatwierdź</button>
+        </div>
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public EventCallback Cancel { get; set; }
+    
+    [Parameter]
+    public EventCallback Confirm { get; set; }
+    
+    [Parameter]
+    public string NameOfElementToDelete { get; set; }
+        
+    private async Task cancelFunction()
+    {
+        await Cancel.InvokeAsync();
+    }
+    
+    private async Task confirmFunction()
+    {
+        await Confirm.InvokeAsync();
+    }
+}

@@ -41,7 +41,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Model\" />
-    <Folder Include="Pages\Components\" />
   </ItemGroup>
   <ItemGroup>
     <Content Remove="Pages\Components\IssueEdit.razor" />

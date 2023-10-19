@@ -8,13 +8,14 @@
 <div class="container col-md-6 mt-5">
     @if (Id != 0)
     {
-        <h3 class="mt-5 mb-5">Edytuj spraw</h3>
+        <h3 class="mt-5 mb-5">Edytuj zlecenie</h3>
     }
     else
     {
-        <h3 class="mt-5 mb-5">Nowa sprawa</h3> 
+        <h3 class="mt-5 mb-5">Nowe zlecenie</h3> 
     }
     <h4 class="mt-5 mb-5">Informacje ogólne</h4>
+    
     <EditForm Model="@newCase" OnValidSubmit="HandleValidSubmit">
         <DataAnnotationsValidator/>
         <ValidationSummary/>
@@ -34,7 +35,7 @@
             @if (Id != 0)
             {
                 <div>
-                    <button class="btn button-secondary-idle-delete" @onclick="HandleDeleteButton">Usuń zlecenie</button>
+                    <a class="btn button-secondary-idle-delete" @onclick="ToggleModal">Usuń zlecenie</a>
                 </div>
             }
             <div>
@@ -52,20 +53,28 @@
     </EditForm>
 </div>
 
+@if (showModal)
+{
+    <ConfirmationModal NameOfElementToDelete="zlecenie" Confirm="HandleDeleteButton" Cancel="ToggleModal"></ConfirmationModal>
+}
+
 @code{
+    
     [Parameter]
     public int Id { get; set; }
-    
+
     [Parameter]
     public string PreviousPage { get; set; }
     
+    private bool showModal = false;
+
     private ICase newCase = new Case();
 
     protected override async Task OnParametersSetAsync()
     {
         if (Id != 0)
         {
-            newCase = await UnitOfWork.CaseRepository.GetCaseById(Id); 
+            newCase = await UnitOfWork.CaseRepository.GetCaseById(Id);
         }
     }
 
@@ -84,11 +93,16 @@
         }
     }
     
+    private void ToggleModal()
+    {
+        showModal = !showModal;
+    }
+    
     private void HandleCancelButton()
     {
         navigation.NavigateTo($"{PreviousPage}");
     }
-    
+
     private async Task HandleDeleteButton()
     {
         await UnitOfWork.CaseRepository.DeleteCase(Id);
