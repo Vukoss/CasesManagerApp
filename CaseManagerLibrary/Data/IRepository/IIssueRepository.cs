@@ -14,4 +14,6 @@ public interface IIssueRepository
     Task<IIssue> GetIssueById(int id);
     
     Task UpdateIssue(IIssue issue);
+
+    Task<List<Issue>> GetAllSpecialistsIssuesFromCurrentYear(string userId);
 }

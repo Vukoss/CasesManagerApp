@@ -7,6 +7,11 @@ public static class SD
     public static string StatusFinished = "Zrealizowano";
     public static string StatusCancelled = "Anulowano";
 
+    public static string StatusPendingChartLabel = "Sprawy oczekujące na realizację";
+    public static string StatusInProcessChartLabel = "Sprawy w trakcie realizacji";
+    public static string StatusFinishedChartLabel = "Sprawy zrealizowane";
+    public static string StatusCancelledChartLabel = "Sprawy anulowane";
+
     public static string LaboratoryDactyloscopy = "Daktyloskopia";
     public static string LaboratoryDocucments = "Dokumenty";
     public static string LaboratoryWriting = "Pismo";

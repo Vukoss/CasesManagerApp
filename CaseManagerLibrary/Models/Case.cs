@@ -13,8 +13,8 @@ namespace CaseManagerLibrary.Models
         [Required]
         [MaxLength(300)]
         public string Principal { get; set; }
-        [Required]
-        public DateTime DateOfReceipte { get; set; }
+
+        [Required] public DateTime DateOfReceipte { get; set; } = DateTime.Now;
         public List<Issue> Issues { get; set; }
     }
 }
