@@ -6,15 +6,25 @@
 @inject IUnitOfWork UnitOfWork
 @inject NavigationManager navigation
 
-<div class="container col-6 mt-5">
+<div class="container col-4 mt-5">
+        @if (issueId != 0)
+        {
+            <h3 class="mt-5 mb-5">Edytuj sprawę</h3>
+        }
+        else
+        {
+            <h3 class="mt-5 mb-5">Nowe sprawa</h3> 
+        }
+        <h4 class="mt-5 mb-5">Informacje ogólne</h4>
+        
     <EditForm Model="@issue" OnValidSubmit="HandleValidSubmit">
-        <DataAnnotationsValidator />
-        <ValidationSummary />
-        <div class="form-group">
+        <DataAnnotationsValidator/>
+        <ValidationSummary/>
+        <div class="form-group mb-2">
             <label>Numer Sprawy</label>
             <InputText @bind-Value="issue.IssueNumber" class="form-control"></InputText>
         </div>
-        <div class="form-group">
+        <div class="form-group mb-2">
             <label>Specjalista</label>
             <InputSelect @bind-Value="issue.SpecialistId" class="form-control">
                 <option disabled selected hidden value="">--wybierz specjalistę--</option>
@@ -34,9 +44,10 @@
                 }
             </InputSelect>
         </div>
-        <div class="form-group">
+        <div class="form-group mb-2">
             <label>Status</label>
             <InputSelect @bind-Value="issue.Status" class="form-control">
+                <option disabled selected hidden value="">--status sprawy--</option>
                 <option value=@SD.StatusPending>@SD.StatusPending</option>
                 <option value=@SD.StatusInProcess>@SD.StatusInProcess</option>
                 <option value=@SD.StatusCancelled>@SD.StatusCancelled</option>

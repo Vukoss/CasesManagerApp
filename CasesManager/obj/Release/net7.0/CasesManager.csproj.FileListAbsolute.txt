@@ -587,7 +587,6 @@
 /Users/patryk/Desktop/NET/CasesManagerBlazor/CasesManager/obj/Release/net7.0/staticwebassets.build.json
 /Users/patryk/Desktop/NET/CasesManagerBlazor/CasesManager/obj/Release/net7.0/staticwebassets.development.json
 /Users/patryk/Desktop/NET/CasesManagerBlazor/CasesManager/obj/Release/net7.0/scopedcss/Shared/MainLayout.razor.rz.scp.css
-/Users/patryk/Desktop/NET/CasesManagerBlazor/CasesManager/obj/Release/net7.0/scopedcss/Shared/NavMenu.razor.rz.scp.css
 /Users/patryk/Desktop/NET/CasesManagerBlazor/CasesManager/obj/Release/net7.0/scopedcss/bundle/CasesManager.styles.css
 /Users/patryk/Desktop/NET/CasesManagerBlazor/CasesManager/obj/Release/net7.0/scopedcss/projectbundle/CasesManager.bundle.scp.css
 /Users/patryk/Desktop/NET/CasesManagerBlazor/CasesManager/obj/Release/net7.0/CasesManager.csproj.CopyComplete

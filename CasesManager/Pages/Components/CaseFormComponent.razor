@@ -5,52 +5,55 @@
 @inject IUnitOfWork UnitOfWork
 @inject NavigationManager navigation
 
-<div class="container col-md-6 mt-5">
-    @if (Id != 0)
-    {
-        <h3 class="mt-5 mb-5">Edytuj zlecenie</h3>
-    }
-    else
-    {
-        <h3 class="mt-5 mb-5">Nowe zlecenie</h3> 
-    }
-    <h4 class="mt-5 mb-5">Informacje ogólne</h4>
-    
-    <EditForm Model="@newCase" OnValidSubmit="HandleValidSubmit">
-        <DataAnnotationsValidator/>
-        <ValidationSummary/>
-        <div class="form-group mb-2">
-            <label>Numer Zlecenia</label>
-            <InputText @bind-Value="@newCase.CaseNumber" class="form-control"></InputText>
-        </div>
-        <div class="form-group mb-2">
-            <label>Zleceniodawca</label>
-            <InputText @bind-Value="@newCase.Principal" class="form-control"></InputText>
-        </div>
-        <div class="form-group mb-2">
-            <label></label>
-            <InputDate @bind-Value="@newCase.DateOfReceipte" class="form-control"></InputDate>
-        </div>
-        <div class="d-flex justify-content-between mt-5">
-            @if (Id != 0)
-            {
-                <div>
-                    <a class="btn button-secondary-idle-delete" @onclick="ToggleModal">Usuń zlecenie</a>
-                </div>
-            }
-            <div>
-                <div class="btn button-secondary-idle" @onclick="HandleCancelButton">Anuluj</div>
+<div class="container mt-5">
+    <div class="row d-flex justify-content-center">
+        <div class="col-6">
                 @if (Id != 0)
                 {
-                    <button class="btn button-primary-idle" type="submit">Edytuj zlecenie</button>
+                    <h3 class="mt-5 mb-5">Edytuj zlecenie</h3>
                 }
                 else
                 {
-                    <button class="btn button-primary-idle" type="submit">Dodaj zlecenie</button>
+                    <h3 class="mt-5 mb-5">Nowe zlecenie</h3>
                 }
-            </div>
+                <h4 class="mt-5 mb-5">Informacje ogólne</h4>
+                <EditForm Model="@newCase" OnValidSubmit="HandleValidSubmit">
+                    <DataAnnotationsValidator/>
+                    <ValidationSummary/>
+                    <div class="form-group mb-2">
+                        <label>Numer Zlecenia</label>
+                        <InputText @bind-Value="@newCase.CaseNumber" class="form-control"></InputText>
+                    </div>
+                    <div class="form-group mb-2">
+                        <label>Zleceniodawca</label>
+                        <InputText @bind-Value="@newCase.Principal" class="form-control"></InputText>
+                    </div>
+                    <div class="form-group mb-2">
+                        <label></label>
+                        <InputDate @bind-Value="@newCase.DateOfReceipte" class="form-control"></InputDate>
+                    </div>
+                    <div class="d-flex justify-content-between mt-5">
+                        @if (Id != 0)
+                        {
+                            <div>
+                                <a class="btn button-secondary-idle-delete" @onclick="ToggleModal">Usuń zlecenie</a>
+                            </div>
+                        }
+                        <div>
+                            <div class="btn button-secondary-idle" @onclick="HandleCancelButton">Anuluj</div>
+                            @if (Id != 0)
+                            {
+                                <button class="btn button-primary-idle" type="submit">Edytuj zlecenie</button>
+                            }
+                            else
+                            {
+                                <button class="btn button-primary-idle" type="submit">Dodaj zlecenie</button>
+                            }
+                        </div>
+                    </div>
+                </EditForm>
         </div>
-    </EditForm>
+    </div>
 </div>
 
 @if (showModal)

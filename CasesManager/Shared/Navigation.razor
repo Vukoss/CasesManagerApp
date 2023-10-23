@@ -1,0 +1,48 @@
+<AuthorizeView>
+    <Authorized>
+        <div class="navigation">
+            <div class="container">
+                <nav>
+                    <div class="d-flex align-items-center justify-content-between">
+                        <ul class="d-flex">
+                            <li>
+                                <NavLink class="nav-link" href="/">
+                                    <span class="oi oi-home" aria-hidden="true"></span>
+                                    Dashboard
+                                </NavLink>
+                            </li>
+                            <li>
+                                <NavLink class="nav-link" href="/allcases">
+                                    <span class="oi oi-plus" aria-hidden="true"></span>
+                                    Wszystkie zlecenia
+                                </NavLink>
+                            </li>
+                            <li>
+                                <NavLink class="nav-link" href="/archive">
+                                    <span class="oi oi-list-rich" aria-hidden="true"></span>
+                                    Archiwum
+                                </NavLink>
+                            </li>
+                        </ul>
+                        <div class="d-flex">
+                            <form method="post" action="Identity/Account/Logout">
+                                <button type="submit" class="nav-link btn btn-link">Wyloguj się</button>
+                            </form>
+                            <a class="nav-link btn btn-link" href="Identity/Account/Register">Zarejestruj nowego użytkownika</a>
+                        </div>
+                    </div>
+                </nav>
+
+            </div>
+        </div>
+    </Authorized>
+    <NotAuthorized>
+        <div class="navigation">
+            <div class="container">
+                <nav class="d-flex justify-content-end align-items-center">
+                    <a class="nav-link" href="Identity/Account/Login">Zaloguj się</a>
+                </nav>
+            </div>
+        </div>
+    </NotAuthorized>
+</AuthorizeView>

@@ -32,6 +32,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQ29tcG9uZW50cy9DYXNlRm9ybUNvbXBvbmVudC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
+[/Users/patryk/Desktop/NET/CasesManagerBlazor/CasesManager/Pages/Components/Chart.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQ29tcG9uZW50cy9DaGFydC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
 [/Users/patryk/Desktop/NET/CasesManagerBlazor/CasesManager/Pages/Components/CommentFormComponent.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQ29tcG9uZW50cy9Db21tZW50Rm9ybUNvbXBvbmVudC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
@@ -60,6 +64,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL0xvZ2luRGlzcGxheS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
+[/Users/patryk/Desktop/NET/CasesManagerBlazor/CasesManager/Shared/Navigation.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL05hdmlnYXRpb24ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
 [/Users/patryk/Desktop/NET/CasesManagerBlazor/CasesManager/Shared/SurveyPrompt.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL1N1cnZleVByb21wdC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
@@ -71,10 +79,6 @@ build_metadata.AdditionalFiles.CssScope =
 [/Users/patryk/Desktop/NET/CasesManagerBlazor/CasesManager/Shared/MainLayout.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL01haW5MYXlvdXQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-8gty5pai35
-
-[/Users/patryk/Desktop/NET/CasesManagerBlazor/CasesManager/Shared/NavMenu.razor]
-build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL05hdk1lbnUucmF6b3I=
-build_metadata.AdditionalFiles.CssScope = b-ow1pvuybzt
 
 [/Users/patryk/Desktop/NET/CasesManagerBlazor/CasesManager/Areas/Identity/Pages/Account/LogOut.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXMvSWRlbnRpdHkvUGFnZXMvQWNjb3VudC9Mb2dPdXQuY3NodG1s

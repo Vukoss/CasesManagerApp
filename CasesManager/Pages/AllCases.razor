@@ -18,10 +18,10 @@
                 </div>
             </div>
             <div>
-                @if (Cases == null)
+                @if (Cases.Count() == 0)
                 {
-                    <div class="text-center">
-                        <p>Brak spraw!</p>
+                    <div class="d-flex justify-content-center align-items-center" style="background-color: #F6F8FB; min-height:600px;">
+                        <h4>Brak zleceń!</h4>
                     </div>
                 }
                 else

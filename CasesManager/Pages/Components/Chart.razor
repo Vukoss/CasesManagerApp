@@ -1,0 +1,44 @@
+@using CaseManagerLibrary.Utility
+@using CaseManagerLibrary.Data.UOW
+@inject IUnitOfWork unitOfWork
+
+<div class="d-flex flex-column">
+    <div class="mb-5 text-center">
+        <h4>Podsumowanie spraw z @currentYear</h4>
+        <p>W sumie: @userIssues.Count()</p>
+    </div>
+    <div class="mt-5">
+        <MudChart ChartOptions="@(new() { ChartPalette = new[] { "#1A5ABF", "#F2994A", "#219653", "#b02a37" } })" ChartType="ChartType.Pie" Width="300px" Height="300px" InputData="@data" InputLabels="@labels"/>
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public string userId { get; set; }
+
+    private string currentYear = DateTime.Now.ToString("yyyy");
+
+    public double[] data;
+    
+    public string[] labels = { SD.StatusPendingChartLabel, SD.StatusInProcessChartLabel, SD.StatusFinishedChartLabel, SD.StatusCancelledChartLabel };
+
+    private List<Issue> userIssues = new();
+    
+    private int? PendingCases;
+
+    private int? InProcessCases;
+
+    private int? FinishedCases;
+
+    private int? CancelledCases;
+
+    protected override async Task OnParametersSetAsync()
+    {
+        userIssues = await unitOfWork.IssueRepository.GetAllSpecialistsIssuesFromCurrentYear(userId);
+        PendingCases = userIssues.Where(i => i.Status == SD.StatusPending).Count();
+        InProcessCases = userIssues.Where(i => i.Status == SD.StatusInProcess).Count();
+        FinishedCases = userIssues.Where(i => i.Status == SD.StatusFinished).Count();
+        CancelledCases = userIssues.Where(i => i.Status == SD.StatusCancelled).Count();
+        data = new double[] { PendingCases.GetValueOrDefault(), InProcessCases.GetValueOrDefault(), FinishedCases.GetValueOrDefault(), CancelledCases.GetValueOrDefault() };
+    }
+}
