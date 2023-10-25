@@ -11,38 +11,88 @@
             <div class="d-flex justify-content-between mb-5">
                 <div>
                     <h3>Zlecenia w toku</h3>
-                    <p>W sumie: @Cases.Count()</p>
+                    <p>W sumie: @CasesList.Count()</p>
                 </div>
                 <div>
                     <button class="btn button-primary-idle" @onclick="HandleButtonNewCase">Dodaje nowe zlecenie</button>
                 </div>
             </div>
-            <div>
-                @if (Cases.Count() == 0)
+            <div class="d-flex justify-content-start gap-3 mb-5">
+                <div class="form-group">
+                    <label>Numer zlecenia</label>
+                    <input class="form-control" @bind-value="searchInputForCaseNumber" @bind-value:event="oninput" style="width: 300px;"/>
+                </div>
+                <div class="form-group">
+                    <label>Zleceniodawca</label>
+                    <input class="form-control" @bind-value="searchInputForPrincipal" @bind-value:event="oninput" style="width: 300px;"/>
+                </div>
+                <div class="form-group">
+                    <label>Sortuj</label>
+                    <select @bind="selectedSortOption" class="form-control" style="width: 300px;">
+                        <option value="newest">Najnowsze</option>
+                        <option value="oldest">Najstarsze</option>
+                    </select>
+                </div>
+            </div>
+            <div style="padding-top: 30px;">
+                @if (CasesList.Count() == 0)
                 {
                     <div class="d-flex justify-content-center align-items-center" style="background-color: #F6F8FB; min-height:600px;">
                         <h4>Brak zleceń!</h4>
                     </div>
                 }
-                else
+                else if (searchInputForCaseNumber is null or "" && searchInputForPrincipal is null or "" && selectedSortOption is null or "")
                 {
                     <div class="row gap-3 justify-content-start">
-                        @foreach (var c in Cases)
+                        @foreach (var c in CasesList.OrderByDescending(c => c.DateOfReceipte))
                         {
                             <CardComponent Case="c" PreviousPage="/allcases"></CardComponent>
                         }
                     </div>
-                }
+                } 
+                else
+                {
+                    <div class="row gap-3 justify-content-start">
+                        @foreach (var c in filteredCasesList)
+                        {
+                            <CardComponent Case="c" PreviousPage="/allcases"></CardComponent>
+                        }
+                    </div>
+                } 
+               
             </div>
         </div>
     </Authorized>
 </AuthorizeView>
 
 @code{
-    private List<ICase> Cases = new();
+    private List<ICase> CasesList { get; set; } = new();
+    private string searchInputForCaseNumber = "";
+    private string searchInputForPrincipal = "";
+    private string selectedSortOption = "";
 
+    private List<ICase> filteredCasesList
+    {
+        get
+        {
+            var filteredList = CasesList
+                .Where(c => c.CaseNumber.ToLower().Contains(searchInputForCaseNumber.ToLower()))
+                .Where(c => c.Principal.ToLower().Contains(searchInputForPrincipal.ToLower()));
+            
+            if (selectedSortOption == "oldest")
+            {
+                filteredList = filteredList.OrderBy(c => c.DateOfReceipte);
+            }
+            else
+            {
+                filteredList = filteredList.OrderByDescending(c => c.DateOfReceipte);
+            }
+            return filteredList.ToList();
+        }
+    }
+    
     private string PreviousPage = "allcases";
-
+    
     private void HandleButtonNewCase()
     {
         navigation.NavigateTo($"/caseform/{PreviousPage}");
@@ -50,6 +100,6 @@
 
     protected override async Task OnParametersSetAsync()
     {
-        Cases = await UnitOfWork.CaseRepository.GetAllCases();
+        CasesList = await UnitOfWork.CaseRepository.GetAllCases();
     }
 }
