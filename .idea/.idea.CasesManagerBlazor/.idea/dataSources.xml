@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="CasesManagerBlazor@localhost" uuid="9db05fb9-529d-4782-90cb-240af1dea3ed">
+    <data-source source="LOCAL" name="CasesManagerBlazor@localhost" uuid="3efe3411-6f25-4d2c-9a81-59d8bfcef894">
       <driver-ref>postgresql</driver-ref>
       <synchronize>true</synchronize>
       <configured-by-url>true</configured-by-url>

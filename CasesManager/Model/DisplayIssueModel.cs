@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using CaseManagerLibrary.Models.IModels;
+using CaseManagerLibrary.Utility;
 
 namespace CasesManager.Model
 {
@@ -10,7 +11,7 @@ namespace CasesManager.Model
         [Required]
         public string IssueNumber { get; set; }
         [Required]
-        public string Status { get; set; }
+        public string Status { get; set; } = SD.StatusPending;
         [Required]
         public int CaseId { get; set; }
         [Required]

@@ -9,22 +9,80 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a9079758-1fd1-4d6c-98ac-dfcb200f008d" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/CasesManager/Pages/Components/CommentComponent.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.CasesManagerBlazor/.idea/dataSources.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.CasesManagerBlazor/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CasesManagerBlazor/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CaseManagerLibrary/Data/DataAccess/AppDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CaseManagerLibrary/Data/DataAccess/AppDbContext.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CaseManagerLibrary/Data/IRepository/ICommentRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CaseManagerLibrary/Data/IRepository/ICommentRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CaseManagerLibrary/Data/IRepository/ILaboratoryRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CaseManagerLibrary/Data/IRepository/ILaboratoryRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CaseManagerLibrary/Data/IRepository/ISpecialistRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CaseManagerLibrary/Data/IRepository/ISpecialistRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CaseManagerLibrary/Data/Repository/CommentRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CaseManagerLibrary/Data/Repository/CommentRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CaseManagerLibrary/Data/Repository/LaboratoryRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CaseManagerLibrary/Data/Repository/LaboratoryRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CaseManagerLibrary/Data/Repository/SpecialistRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CaseManagerLibrary/Data/Repository/SpecialistRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CaseManagerLibrary/Data/UOW/UnitOfWork.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CaseManagerLibrary/Data/UOW/UnitOfWork.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CaseManagerLibrary/Migrations/20231005204728_init.Designer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CaseManagerLibrary/Migrations/20231005204728_init.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CaseManagerLibrary/Migrations/AppDbContextModelSnapshot.cs" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/CaseManagerLibrary/Models/Case.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CaseManagerLibrary/Models/Case.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CaseManagerLibrary/Models/Comment.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CaseManagerLibrary/Models/Comment.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CaseManagerLibrary/Models/Issue.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CaseManagerLibrary/Models/Issue.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CaseManagerLibrary/Models/Specialist.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CaseManagerLibrary/Models/Specialist.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CaseManagerLibrary/Utility/SD.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CaseManagerLibrary/Utility/SD.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CaseManagerLibrary/bin/Debug/net7.0/CaseManagerLibrary.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CaseManagerLibrary/bin/Debug/net7.0/CaseManagerLibrary.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CaseManagerLibrary/bin/Debug/net7.0/CaseManagerLibrary.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/CaseManagerLibrary/bin/Debug/net7.0/CaseManagerLibrary.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CaseManagerLibrary/bin/Release/net7.0/CaseManagerLibrary.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CaseManagerLibrary/bin/Release/net7.0/CaseManagerLibrary.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CaseManagerLibrary/bin/Release/net7.0/CaseManagerLibrary.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/CaseManagerLibrary/bin/Release/net7.0/CaseManagerLibrary.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CaseManagerLibrary/obj/Debug/net7.0/CaseManagerLibrary.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/CaseManagerLibrary/obj/Debug/net7.0/CaseManagerLibrary.csproj.CoreCompileInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CaseManagerLibrary/obj/Debug/net7.0/CaseManagerLibrary.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CaseManagerLibrary/obj/Debug/net7.0/CaseManagerLibrary.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CaseManagerLibrary/obj/Debug/net7.0/CaseManagerLibrary.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/CaseManagerLibrary/obj/Debug/net7.0/CaseManagerLibrary.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CaseManagerLibrary/obj/Debug/net7.0/ref/CaseManagerLibrary.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CaseManagerLibrary/obj/Debug/net7.0/ref/CaseManagerLibrary.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CaseManagerLibrary/obj/Debug/net7.0/refint/CaseManagerLibrary.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CaseManagerLibrary/obj/Debug/net7.0/refint/CaseManagerLibrary.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CaseManagerLibrary/obj/Release/net7.0/CaseManagerLibrary.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/CaseManagerLibrary/obj/Release/net7.0/CaseManagerLibrary.csproj.CoreCompileInputs.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CaseManagerLibrary/obj/Release/net7.0/CaseManagerLibrary.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CaseManagerLibrary/obj/Release/net7.0/CaseManagerLibrary.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CaseManagerLibrary/obj/Release/net7.0/CaseManagerLibrary.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/CaseManagerLibrary/obj/Release/net7.0/CaseManagerLibrary.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CaseManagerLibrary/obj/Release/net7.0/ref/CaseManagerLibrary.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CaseManagerLibrary/obj/Release/net7.0/ref/CaseManagerLibrary.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CaseManagerLibrary/obj/Release/net7.0/refint/CaseManagerLibrary.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CaseManagerLibrary/obj/Release/net7.0/refint/CaseManagerLibrary.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CasesManager/Areas/Identity/Pages/Account/LogOut.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/CasesManager/Areas/Identity/Pages/Account/LogOut.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CasesManager/Areas/Identity/Pages/Shared/_LoginPartial.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/CasesManager/Areas/Identity/Pages/Shared/_LoginPartial.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CasesManager/CasesManager.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/CasesManager/CasesManager.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CasesManager/Pages/AllCases.razor" beforeDir="false" afterPath="$PROJECT_DIR$/CasesManager/Pages/AllCases.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CasesManager/Pages/Components/CardComponent.razor" beforeDir="false" afterPath="$PROJECT_DIR$/CasesManager/Pages/Components/CardComponent.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CasesManager/Pages/Components/Chart.razor" beforeDir="false" afterPath="$PROJECT_DIR$/CasesManager/Pages/Components/Chart.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CasesManager/Pages/Components/CommentFormComponent.razor" beforeDir="false" afterPath="$PROJECT_DIR$/CasesManager/Pages/Components/CommentFormComponent.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CasesManager/Pages/Components/IssueFormComponent.razor" beforeDir="false" afterPath="$PROJECT_DIR$/CasesManager/Pages/Components/IssueFormComponent.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CasesManager/Pages/SetUpRoles.razor" beforeDir="false" afterPath="$PROJECT_DIR$/CasesManager/Pages/SetUpRoles.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CasesManager/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CasesManager/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CasesManager/_Imports.razor" beforeDir="false" afterPath="$PROJECT_DIR$/CasesManager/_Imports.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CasesManager/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/CasesManager/appsettings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CasesManager/bin/Debug/net7.0/CaseManagerLibrary.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CasesManager/bin/Debug/net7.0/CaseManagerLibrary.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CasesManager/bin/Debug/net7.0/CaseManagerLibrary.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/CasesManager/bin/Debug/net7.0/CaseManagerLibrary.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CasesManager/bin/Debug/net7.0/CasesManager.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CasesManager/bin/Debug/net7.0/CasesManager.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CasesManager/bin/Debug/net7.0/CasesManager.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/CasesManager/bin/Debug/net7.0/CasesManager.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CasesManager/bin/Debug/net7.0/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/CasesManager/bin/Debug/net7.0/appsettings.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CasesManager/bin/Release/net7.0/CaseManagerLibrary.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CasesManager/bin/Release/net7.0/CaseManagerLibrary.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CasesManager/bin/Release/net7.0/CaseManagerLibrary.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/CasesManager/bin/Release/net7.0/CaseManagerLibrary.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CasesManager/bin/Release/net7.0/CasesManager.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CasesManager/bin/Release/net7.0/CasesManager.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CasesManager/bin/Release/net7.0/CasesManager.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/CasesManager/bin/Release/net7.0/CasesManager.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CasesManager/bin/Release/net7.0/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/CasesManager/bin/Release/net7.0/appsettings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CasesManager/obj/Debug/net7.0/CasesManager.GeneratedMSBuildEditorConfig.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/CasesManager/obj/Debug/net7.0/CasesManager.GeneratedMSBuildEditorConfig.editorconfig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CasesManager/obj/Debug/net7.0/CasesManager.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/CasesManager/obj/Debug/net7.0/CasesManager.csproj.AssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CasesManager/obj/Debug/net7.0/CasesManager.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/CasesManager/obj/Debug/net7.0/CasesManager.csproj.CoreCompileInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CasesManager/obj/Debug/net7.0/CasesManager.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CasesManager/obj/Debug/net7.0/CasesManager.csproj.FileListAbsolute.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CasesManager/obj/Debug/net7.0/CasesManager.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CasesManager/obj/Debug/net7.0/CasesManager.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CasesManager/obj/Debug/net7.0/CasesManager.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/CasesManager/obj/Debug/net7.0/CasesManager.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CasesManager/obj/Debug/net7.0/ref/CasesManager.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CasesManager/obj/Debug/net7.0/ref/CasesManager.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CasesManager/obj/Debug/net7.0/refint/CasesManager.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CasesManager/obj/Debug/net7.0/refint/CasesManager.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CasesManager/obj/Debug/net7.0/scopedcss/Shared/NavMenu.razor.rz.scp.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CasesManager/obj/Debug/net7.0/scopedcss/bundle/CasesManager.styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/CasesManager/obj/Debug/net7.0/scopedcss/bundle/CasesManager.styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CasesManager/obj/Debug/net7.0/scopedcss/projectbundle/CasesManager.bundle.scp.css" beforeDir="false" afterPath="$PROJECT_DIR$/CasesManager/obj/Debug/net7.0/scopedcss/projectbundle/CasesManager.bundle.scp.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CasesManager/obj/Release/net7.0/CasesManager.GeneratedMSBuildEditorConfig.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/CasesManager/obj/Release/net7.0/CasesManager.GeneratedMSBuildEditorConfig.editorconfig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CasesManager/obj/Release/net7.0/CasesManager.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/CasesManager/obj/Release/net7.0/CasesManager.csproj.AssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CasesManager/obj/Release/net7.0/CasesManager.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/CasesManager/obj/Release/net7.0/CasesManager.csproj.CoreCompileInputs.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CasesManager/obj/Release/net7.0/CasesManager.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CasesManager/obj/Release/net7.0/CasesManager.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CasesManager/obj/Release/net7.0/CasesManager.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/CasesManager/obj/Release/net7.0/CasesManager.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CasesManager/obj/Release/net7.0/ref/CasesManager.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CasesManager/obj/Release/net7.0/ref/CasesManager.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CasesManager/obj/Release/net7.0/refint/CasesManager.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CasesManager/obj/Release/net7.0/refint/CasesManager.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CasesManager/wwwroot/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/CasesManager/wwwroot/css/main.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,6 +97,9 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/7d382df578ec93391918cfaa4ce7f4b8f35c9aed1241d6556dc9be26df13c/IdentityUser.cs" root0="SKIP_HIGHLIGHTING" />
+  </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 8
@@ -51,28 +112,32 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;HotReloadSettingsPage&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "master",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "HotReloadSettingsPage",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;rider.external.source.directories&quot;: [
-      &quot;/Users/patryk/Library/Application Support/JetBrains/Rider2023.2/resharper-host/DecompilerCache&quot;,
-      &quot;/Users/patryk/Library/Application Support/JetBrains/Rider2023.2/resharper-host/SourcesCache&quot;,
-      &quot;/Users/patryk/.local/share/Symbols/src&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "postgresql"
+    ],
+    "rider.external.source.directories": [
+      "/Users/patryk/Library/Application Support/JetBrains/Rider2023.2/resharper-host/DecompilerCache",
+      "/Users/patryk/Library/Application Support/JetBrains/Rider2023.2/resharper-host/SourcesCache",
+      "/Users/patryk/.local/share/Symbols/src"
     ]
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected=".NET Launch Settings Profile.CasesManager: https">
     <configuration name="CasesManager: http" type="LaunchSettings" factoryName=".NET Launch Settings Profile" temporary="true">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/CasesManager/CasesManager.csproj" />
@@ -127,7 +192,15 @@
       <workItem from="1696786158957" duration="14869000" />
       <workItem from="1697633389343" duration="4603000" />
       <workItem from="1697641311847" duration="23132000" />
-      <workItem from="1697978266593" duration="42577000" />
+      <workItem from="1697978266593" duration="62694000" />
+      <workItem from="1698489768449" duration="16517000" />
+      <workItem from="1698588980436" duration="2156000" />
+      <workItem from="1698597089169" duration="1308000" />
+      <workItem from="1698598410478" duration="8746000" />
+      <workItem from="1698614790148" duration="37000" />
+      <workItem from="1698687442869" duration="2003000" />
+      <workItem from="1698689477583" duration="648000" />
+      <workItem from="1698690140735" duration="14661000" />
     </task>
     <servers />
   </component>
@@ -135,6 +208,12 @@
     <option name="version" value="3" />
   </component>
   <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
+  <component name="UnknownFeatures">
+    <option featureType="dependencySupport" implementationName="dotnet:Microsoft.Identity.Client" />
+    <option featureType="dependencySupport" implementationName="dotnet:Microsoft.EntityFrameworkCore.Abstractions" />
+    <option featureType="dependencySupport" implementationName="dotnet:Microsoft.EntityFrameworkCore.Relational" />
+    <option featureType="dependencySupport" implementationName="dotnet:Microsoft.EntityFrameworkCore" />
+  </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
   </component>

@@ -10,9 +10,9 @@
                 <p class="card-label">Numer Zlecenia</p>
                 <p>@Case.CaseNumber</p>
             </div>
-            <button class="button-idle-add">
-                <span class="align-middle oi oi-plus" @onclick="newIssueButtonHandler"></span>
-            </button>
+            <div class="button-edit" @onclick="editCaseButtonHandler">
+                <button class="oi oi-pencil"></button>
+            </div>
         </div>
         <div class="d-flex justify-content-between">
             <div>
@@ -34,8 +34,10 @@
             </div>
         }
     </div>
-    <div class="card-footer text-center">
-        <div class="link" @onclick="editCaseButtonHandler">Edit</div>
+    <div class="card-footer">
+        <button class="button-idle-add" @onclick="newIssueButtonHandler">
+            <span class="align-middle oi oi-plus" ></span>
+        </button>
     </div>
 </div>
 
@@ -68,4 +70,3 @@
         navigation.NavigateTo($"/editcase/{PreviousPage}/{Case.Id}");
     }
 }
-

@@ -15,7 +15,7 @@ public class LaboratoryRepository : ILaboratoryRepository
     
     public async Task<Laboratory> GetLaboratoryNameByLaboratoryId(int laboratoryId)
     {
-        string sql = "SELECT l.\"LaboratoryName\" FROM public.\"Laboratory\" l WHERE l.\"Id\" = @LaboratoryId";
+        string sql = "SELECT l.\"LaboratoryName\" FROM public.\"Laboratories\" l WHERE l.\"Id\" = @LaboratoryId";
 
         var c = new
         {
@@ -24,6 +24,15 @@ public class LaboratoryRepository : ILaboratoryRepository
 
         var output = await _db.LoadData<Laboratory, dynamic>(sql, c, "Default");
 
-        return output.First();
+        return output.FirstOrDefault();
+    }
+    
+    public async Task<List<Laboratory>> GetAllLaboratories()
+    {
+        string sql = "SELECT l.\"Id\", l.\"LaboratoryName\" FROM public.\"Laboratories\" l;";
+
+        var output = await _db.LoadData<Laboratory, dynamic>(sql, new {}, "Default");
+
+        return output.ToList();
     }
 }

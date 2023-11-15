@@ -14,14 +14,27 @@ public class CommentRepository : ICommentRepository
         _db = db;
     }
     
-    public async Task AddNewComment(IComment comment)
+    public async Task AddNewComment(Comment comment, int issueId, string specialistId)
     {
-        string sql = "INSERT INTO public.\"Comments\"(CommentText, IssueId) VALUES(@CommentText, @IssueId)";
+        string sql = "INSERT INTO public.\"Comments\"(\"CommentText\", \"CommentDate\", \"IssueId\", \"SpecialistId\") VALUES(@CommentText, @CommentDate, @IssueId, @SpecialistId)";
         var p = new
         {
             @CommentText = comment.CommentText,
-            @IssueId = comment.IssueId
+            @IssueId = issueId,
+            @SpecialistId = specialistId,
+            @CommentDate = comment.CommentDate
         };
         await _db.SaveData(sql, p, "Default");
+    }
+    
+    public async Task<List<Comment>> GetAllIssueComments(int issueId)
+    {
+        string sql = "SELECT * FROM public.\"Comments\" c WHERE c.\"IssueId\" = @Id;";
+        var p = new
+        {
+            @Id = issueId
+        };
+        var output = await _db.LoadData<Comment, dynamic>(sql, p, "Default");
+        return output.ToList();
     }
 }

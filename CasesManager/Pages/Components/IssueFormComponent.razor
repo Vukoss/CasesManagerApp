@@ -3,112 +3,279 @@
 @using CaseManagerLibrary.Models.IModels
 @using CaseManagerLibrary.Utility
 @using CaseManagerLibrary.Data.UOW
+@using System.Security.Claims
+@inject AuthenticationStateProvider AuthenticationStateProvider
 @inject IUnitOfWork UnitOfWork
 @inject NavigationManager navigation
 
-<div class="container col-4 mt-5">
-        @if (issueId != 0)
-        {
-            <h3 class="mt-5 mb-5">Edytuj sprawę</h3>
-        }
-        else
-        {
-            <h3 class="mt-5 mb-5">Nowe sprawa</h3> 
-        }
-        <h4 class="mt-5 mb-5">Informacje ogólne</h4>
-        
-    <EditForm Model="@issue" OnValidSubmit="HandleValidSubmit">
-        <DataAnnotationsValidator/>
-        <ValidationSummary/>
-        <div class="form-group mb-2">
-            <label>Numer Sprawy</label>
-            <InputText @bind-Value="issue.IssueNumber" class="form-control"></InputText>
-        </div>
-        <div class="form-group mb-2">
-            <label>Specjalista</label>
-            <InputSelect @bind-Value="issue.SpecialistId" class="form-control">
-                <option disabled selected hidden value="">--wybierz specjalistę--</option>
-                @foreach (var s in specialists)
-                {
-                    if (issues.Count == 0)
-                    {
-                        <option value="@s.Id">@s.FirstName @s.LastName</option>
-                    }
-                    else
-                    {
-                        if (!CheckIfIssuesAlreadyHaveSpecialistId(s.Id))
-                        {
-                            <option value="@s.Id">@s.FirstName @s.LastName</option>
-                        }
-                    }
-                }
-            </InputSelect>
-        </div>
-        <div class="form-group mb-2">
-            <label>Status</label>
-            <InputSelect @bind-Value="issue.Status" class="form-control">
-                <option disabled selected hidden value="">--status sprawy--</option>
-                <option value=@SD.StatusPending>@SD.StatusPending</option>
-                <option value=@SD.StatusInProcess>@SD.StatusInProcess</option>
-                <option value=@SD.StatusCancelled>@SD.StatusCancelled</option>
-                <option value=@SD.StatusFinished>@SD.StatusFinished</option>
-            </InputSelect>
-        </div>
-        <div class="d-flex justify-content-between mt-5">
-            @if (issueId != 0)
+<AuthorizeView Roles="Administrator, User">
+    <Authorized Context="issueAddOrEdit">
+        <div class="container">
+            @if (IssueId != 0)
             {
-                <div>
-                    <a class="btn button-secondary-idle-delete" @onclick="ToggleModal">Usuń sprawę</a>
+                <div class="col-12 d-flex justify-content-between">
+                    <h3 class="mt-5 mb-5">Edytuj sprawę</h3>
+                    <div class="mt-5 mb-5">
+                        <a class="btn button-secondary-idle-delete" @onclick="ToggleModal">Usuń sprawę</a>
+                    </div>
+                </div>
+                <div class="grid gap-3 d-flex justify-content-between">
+                    <div class="col-5 mt-5 p-5" style="background-color: #F6F8FB; min-height:600px;">
+                        <div class="d-flex justify-content-between">
+                            <h4>Informacje ogólne</h4>
+                            @if (toggleEditIssue == false)
+                            {
+                                <div class="button-edit" @onclick="handleToggleEdit">
+                                    <button class="oi oi-pencil"></button>
+                                </div>
+                            }
+                        </div>
+                        @if (toggleEditIssue == false)
+                        {
+                            <EditForm Model="@issue" OnValidSubmit="HandleValidSubmit">
+                                <DataAnnotationsValidator />
+                                <ValidationSummary />
+                                <div class="form-group mb-2">
+                                    <label>Numer Sprawy</label>
+                                    <InputText disabled @bind-Value="issue.IssueNumber" class="form-control"></InputText>
+                                </div>
+                                <div class="form-group mb-2">
+                                    <label>Specjalista</label>
+                                    <InputSelect disabled @bind-Value="issue.SpecialistId" class="form-control">
+                                        <option disabled selected hidden value="">--wybierz specjalistę--</option>
+                                        @foreach (var s in specialists)
+                                        {
+                                            if (issues.Count == 0)
+                                            {
+                                                <option value="@s.Id">@s.FirstName @s.LastName</option>
+                                            }
+                                            else
+                                            {
+                                                if (!CheckIfIssuesAlreadyHaveSpecialistId(s.Id))
+                                                {
+                                                    <option value="@s.Id">@s.FirstName @s.LastName</option>
+                                                }
+                                            }
+                                        }
+                                    </InputSelect>
+                                </div>
+                                <div class="form-group mb-2">
+                                    <label>Status</label>
+                                    <InputSelect disabled @bind-Value="issue.Status" class="form-control">
+                                        <option disabled selected hidden value="">--status sprawy--</option>
+                                        <option value=@SD.StatusPending>@SD.StatusPending</option>
+                                        <option value=@SD.StatusInProcess>@SD.StatusInProcess</option>
+                                        <option value=@SD.StatusCancelled>@SD.StatusCancelled</option>
+                                        <option value=@SD.StatusFinished>@SD.StatusFinished</option>
+                                    </InputSelect>
+                                </div>
+                            </EditForm>
+                        }
+                        else
+                        {
+                            <EditForm Model="@issue" OnValidSubmit="HandleValidSubmit">
+                                <DataAnnotationsValidator />
+                                <ValidationSummary />
+                                <div class="form-group mb-2">
+                                    <label>Numer Sprawy</label>
+                                    <InputText @bind-Value="issue.IssueNumber" class="form-control"></InputText>
+                                </div>
+                                <div class="form-group mb-2">
+                                    <label>Specjalista</label>
+                                    <InputSelect @bind-Value="issue.SpecialistId" class="form-control">
+                                        <option disabled selected hidden value="">--wybierz specjalistę--</option>
+                                        @foreach (var s in specialists)
+                                        {
+                                            if (issues.Count == 0)
+                                            {
+                                                <option value="@s.Id">@s.FirstName @s.LastName</option>
+                                            }
+                                            else
+                                            {
+                                                if (!CheckIfIssuesAlreadyHaveSpecialistId(s.Id))
+                                                {
+                                                    <option value="@s.Id">@s.FirstName @s.LastName</option>
+                                                }
+                                            }
+                                        }
+                                    </InputSelect>
+                                </div>
+                                <div class="form-group mb-2">
+                                    <label>Status</label>
+                                    <InputSelect @bind-Value="issue.Status" class="form-control">
+                                        <option disabled selected hidden value="">--status sprawy--</option>
+                                        <option value=@SD.StatusPending>@SD.StatusPending</option>
+                                        <option value=@SD.StatusInProcess>@SD.StatusInProcess</option>
+                                        <option value=@SD.StatusCancelled>@SD.StatusCancelled</option>
+                                        <option value=@SD.StatusFinished>@SD.StatusFinished</option>
+                                    </InputSelect>
+                                </div>
+                                <div class="d-flex justify-content-end mt-5">
+                                    <div>
+                                        <div class="btn button-secondary-idle" @onclick="HandleCancelButtonForIssue">Anuluj</div>
+                                        <button class="btn button-primary-idle" type="submit">Zapisz</button>
+                                    </div>
+                                </div>
+                            </EditForm>
+                        }
+                    </div>
+                    <div class="col-7 mt-5 p-5" style="background-color: #F6F8FB; min-height:600px;">
+                        <h4 class="mt-5 mb-5">Komentarze</h4>
+                        <EditForm Model="comment" OnValidSubmit="HandleValidSubmitForComment">
+                            <DataAnnotationsValidator />
+                            <ValidationSummary />
+                            <div class="form-group">
+                                <label>Treść komentarza</label>
+                                <InputTextArea @bind-Value="comment.CommentText" class="form-control"></InputTextArea>
+                            </div>
+                            <div class="d-flex justify-content-end mt-5">
+                                <div>
+                                    <div class="btn button-secondary-idle" @onclick="HandleClearTextArea">Wyczyść</div>
+                                    <button class="btn button-primary-idle" type="submit">Dodaj komentarz</button>
+                                </div>
+                            </div>
+                        </EditForm>
+                        <div style="height: 300px; margin-top:50px; width: 100%;" class="scroll">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th class="col-1">Data</th>
+                                        <th class="col-2">Użytkownik</th>
+                                        <th class="col-9">Treść</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var c in comments.OrderByDescending(c => c.CommentDate))
+                                    {
+                                        <tr>
+                                            <td class="col-1">@c.CommentDate.ToShortDateString()</td>
+                                            <td class="col-2">@specialists.FirstOrDefault(s => s.Id == c.SpecialistId).FullName</td>
+                                            <td class="col-9 text-break">@c.CommentText</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             }
-            <div>
-                <div class="btn button-secondary-idle" @onclick="HandleCancelButton">Anuluj</div>
-                @if (issueId != 0)
-                {
-                    <button class="btn button-primary-idle" type="submit">Edytuj sprawę</button>
-                }
-                else
-                {
-                    <button class="btn button-primary-idle" type="submit">Dodaj sprawę</button>
-                }
-            </div>
+            else
+            {
+                <div class="d-flex justify-content-center">
+                    <div class="col-6 p-5">
+                        <h3 class="col-6 mb-5">Nowa sprawa</h3>
+                        <h4 class="mt-5 mb-5">Informacje ogólne</h4>
+                        <EditForm Model="@issue" OnValidSubmit="HandleValidSubmit">
+                            <DataAnnotationsValidator />
+                            <ValidationSummary />
+                            <div class="form-group mb-2">
+                                <label>Numer Sprawy</label>
+                                <InputText @bind-Value="issue.IssueNumber" class="form-control"></InputText>
+                            </div>
+                            <div class="form-group mb-2">
+                                <label>Specjalista</label>
+                                <InputSelect @bind-Value="issue.SpecialistId" class="form-control">
+                                    <option disabled selected hidden value="">--wybierz specjalistę--</option>
+                                    @foreach (var s in specialists)
+                                    {
+                                        if (issues.Count == 0)
+                                        {
+                                            <option value="@s.Id">@s.FirstName @s.LastName</option>
+                                        }
+                                        else
+                                        {
+                                            if (!CheckIfIssuesAlreadyHaveSpecialistId(s.Id))
+                                            {
+                                                <option value="@s.Id">@s.FirstName @s.LastName</option>
+                                            }
+                                        }
+                                    }
+                                </InputSelect>
+                            </div>
+                            <div class="form-group mb-2">
+                                <label>Status</label>
+                                <InputSelect @bind-Value="issue.Status" class="form-control">
+                                    <option value=@SD.StatusPending>@SD.StatusPending</option>
+                                    <option value=@SD.StatusInProcess>@SD.StatusInProcess</option>
+                                    <option value=@SD.StatusCancelled>@SD.StatusCancelled</option>
+                                    <option value=@SD.StatusFinished>@SD.StatusFinished</option>
+                                </InputSelect>
+                            </div>
+                            <div class="d-flex justify-content-end mt-5">
+                                <div>
+                                    <div class="btn button-secondary-idle" @onclick="HandleCancelButtonForExistingIssueForm">Anuluj</div>
+                                    <button class="btn button-primary-idle" type="submit">Zapisz</button>
+                                </div>
+                            </div>
+                        </EditForm>
+                    </div>
+                </div>
+            }
         </div>
-    </EditForm>
-</div>
 
-@if (showModal)
-{
-    <ConfirmationModal NameOfElementToDelete="sprawę" Confirm="HandleDeleteButton" Cancel="ToggleModal"></ConfirmationModal>
-}
+        @if (showModal)
+        {
+            <ConfirmationModal NameOfElementToDelete="sprawę" Confirm="HandleDeleteButton" Cancel="ToggleModal"></ConfirmationModal>
+        }
+    </Authorized>
+    <NotAuthorized>
+    </NotAuthorized>
+</AuthorizeView>
+
+
 
 @code {
+
     [Parameter]
-    public int caseId { get; set; }
-    
+    public int CaseId { get; set; }
+
     [Parameter]
-    public int issueId { get; set; }
-    
+    public int IssueId { get; set; }
+
     [Parameter]
     public string PreviousPage { get; set; }
 
+    private string userId = "";
+
+    private AuthenticationState authenticationState;
+
+    private Comment comment = new();
+
+    private List<Comment> comments = new();
+
     private List<Specialist> specialists = new();
-    
+
     private List<Issue> issues = new();
-    
+
     private IIssue issue = new DisplayIssueModel();
-    
+
     private bool showModal = false;
-    
+
+    private bool toggleEditIssue = false;
+
+    private void handleToggleEdit()
+    {
+        toggleEditIssue = !toggleEditIssue;
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        authenticationState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+        userId = authenticationState.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+    }
+
     protected override async Task OnParametersSetAsync()
     {
-        if (issueId != 0)
+        if (IssueId != 0)
         {
-            issue = await UnitOfWork.IssueRepository.GetIssueById(issueId);
+            issue = await UnitOfWork.IssueRepository.GetIssueById(IssueId);
+            comments = await UnitOfWork.CommentRepository.GetAllIssueComments(IssueId);
+
         }
         specialists = await UnitOfWork.SpecialistRepository.GetAllSpecialists();
-        issues = await UnitOfWork.IssueRepository.GetAllCaseIssues(caseId);
+        issues = await UnitOfWork.IssueRepository.GetAllCaseIssues(CaseId);
     }
-    
+
     private bool CheckIfIssuesAlreadyHaveSpecialistId(string id)
     {
         var hasMatchingIssue = issues.Any(i => i.SpecialistId == id);
@@ -117,32 +284,50 @@
 
     private async Task HandleValidSubmit()
     {
-        if (issueId != 0)
+        if (IssueId != 0)
         {
             await UnitOfWork.IssueRepository.UpdateIssue(issue);
-            navigation.NavigateTo(PreviousPage);
+            handleToggleEdit();
         }
         else
         {
-            issue.CaseId = caseId;
+            issue.CaseId = CaseId;
             await UnitOfWork.IssueRepository.AddNewIssue(issue);
             navigation.NavigateTo(PreviousPage);
         }
     }
 
+    private async Task HandleValidSubmitForComment()
+    {
+        await UnitOfWork.CommentRepository.AddNewComment(comment, IssueId, userId);
+        comment = new Comment();
+        comments = await UnitOfWork.CommentRepository.GetAllIssueComments(IssueId);
+    }
+
     private async Task HandleDeleteButton()
     {
-        await UnitOfWork.IssueRepository.DeleteIssue(issueId);
+        await UnitOfWork.IssueRepository.DeleteIssue(IssueId);
         navigation.NavigateTo(PreviousPage);
     }
 
-    private void HandleCancelButton()
+    private void HandleCancelButtonForIssue()
+    {
+        handleToggleEdit();
+    }
+
+    private void HandleCancelButtonForExistingIssueForm()
     {
         navigation.NavigateTo(PreviousPage);
     }
-    
+
+    private void HandleClearTextArea()
+    {
+        comment = new();
+    }
+
     private void ToggleModal()
     {
         showModal = !showModal;
     }
+
 }

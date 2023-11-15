@@ -12,10 +12,6 @@ public static class SD
     public static string StatusFinishedChartLabel = "Sprawy zrealizowane";
     public static string StatusCancelledChartLabel = "Sprawy anulowane";
 
-    public static string LaboratoryDactyloscopy = "Daktyloskopia";
-    public static string LaboratoryDocucments = "Dokumenty";
-    public static string LaboratoryWriting = "Pismo";
-    public static string LaboratoryChemistry = "Chemia";
-    public static string LaboratoryBiology = "Biologia";
-    public static string Laboratory = "Biologia";
+    public static string admin = "Administrator";
+    public static string user = "User";
 }

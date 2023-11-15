@@ -14,7 +14,7 @@ public class UnitOfWork : IUnitOfWork
     public ILaboratoryRepository LaboratoryRepository { get; set; }
     public ISpecialistRepository SpecialistRepository { get; set; }
 
-    public UnitOfWork(IDataAccess db, AppDbContext dbContext)
+    public UnitOfWork(IDataAccess db)
     {
         _db = db;
         CaseRepository = new CaseRepository(_db);

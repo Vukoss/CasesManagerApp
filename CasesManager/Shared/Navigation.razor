@@ -1,4 +1,10 @@
-<AuthorizeView>
+@using System.Security.Claims
+@using CaseManagerLibrary.Utility
+@using CaseManagerLibrary.Data.UOW
+@inject AuthenticationStateProvider AuthenticationStateProvider
+@inject IUnitOfWork unitOfWork
+
+<AuthorizeView Roles="Administrator, User">
     <Authorized>
         <div class="navigation">
             <div class="container">
@@ -6,29 +12,44 @@
                     <div class="d-flex align-items-center justify-content-between">
                         <ul class="d-flex">
                             <li>
-                                <NavLink class="nav-link" href="/">
-                                    <span class="oi oi-home" aria-hidden="true"></span>
-                                    Dashboard
-                                </NavLink>
+                                <a class="nav-link d-flex align-items-center @(activeLink == "dashboard" ? "active" : "")"
+                                         href="/"
+                                         @onclick='() => ActiveLinkToggle("dashboard")'>
+                                    <span class="material-symbols-outlined me-1">
+                                        home
+                                    </span>
+                                    <span class="align-middle">Dashboard</span>
+                                </a>
                             </li>
                             <li>
-                                <NavLink class="nav-link" href="/allcases">
-                                    <span class="oi oi-plus" aria-hidden="true"></span>
-                                    Wszystkie zlecenia
-                                </NavLink>
+                                <a class="nav-link d-flex align-items-center @(activeLink == "allcases" ? "active" : "")"
+                                         @onclick='() => ActiveLinkToggle("allcases")'
+                                         href="/allcases">
+                                    <span class="material-symbols-outlined me-1">
+                                        checklist
+                                    </span>
+                                    <span class="align-middle">Wszystkie zlecenia</span>
+                                </a>
                             </li>
                             <li>
-                                <NavLink class="nav-link" href="/archive">
-                                    <span class="oi oi-list-rich" aria-hidden="true"></span>
-                                    Archiwum
-                                </NavLink>
+                                <a class="nav-link d-flex align-items-center @(activeLink == "archive" ? "active" : "")"
+                                         @onclick='() => ActiveLinkToggle("archive")'
+                                         href="/archive">
+                                    <span class="material-symbols-outlined me-1">
+                                        inventory_2
+                                    </span>
+                                    <span class="align-middle">Archiwum zleceń</span>
+                                </a>
                             </li>
                         </ul>
                         <div class="d-flex">
                             <form method="post" action="Identity/Account/Logout">
                                 <button type="submit" class="nav-link btn btn-link">Wyloguj się</button>
                             </form>
-                            <a class="nav-link btn btn-link" href="Identity/Account/Register">Zarejestruj nowego użytkownika</a>
+                            @if (claimsPrincipal.IsInRole(SD.admin))
+                            {
+                                <a class="nav-link btn btn-link" href="Identity/Account/Register">Zarejestruj nowego użytkownika</a>
+                            }
                         </div>
                     </div>
                 </nav>
@@ -46,3 +67,22 @@
         </div>
     </NotAuthorized>
 </AuthorizeView>
+
+@code{
+    private string activeLink = "dashboard";
+
+    private ClaimsPrincipal claimsPrincipal;
+
+    private AuthenticationState authenticationState;
+
+    protected override async Task OnInitializedAsync()
+    {
+        authenticationState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+        claimsPrincipal = authenticationState.User;
+    }
+
+    private void ActiveLinkToggle(string link)
+    {
+        activeLink = link;
+    }
+}

@@ -7,9 +7,12 @@
         <h4>Podsumowanie spraw z @currentYear</h4>
         <p>W sumie: @userIssues.Count()</p>
     </div>
-    <div class="mt-5">
-        <MudChart ChartOptions="@(new() { ChartPalette = new[] { "#1A5ABF", "#F2994A", "#219653", "#b02a37" } })" ChartType="ChartType.Pie" Width="300px" Height="300px" InputData="@data" InputLabels="@labels"/>
-    </div>
+    @if (userIssues.Count() != 0)
+    {
+        <div class="mt-5">
+            <MudChart ChartOptions="@(new() { ChartPalette = new[] { "#1A5ABF", "#F2994A", "#219653", "#b02a37" } })" ChartType="ChartType.Pie" Width="300px" Height="300px" InputData="@data" InputLabels="@labels"/>
+        </div>
+    }
 </div>
 
 @code {

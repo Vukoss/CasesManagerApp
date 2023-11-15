@@ -6,13 +6,13 @@
 /*@media (min-width: 768px) {
     html {
     }
-}
+}*/
 
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
     box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
 
-html {
+/*html {
     position: relative;
     min-height: 100%;
 }
@@ -92,6 +92,15 @@ h6 {
 
 /*BUTTONY*/
 
+.button-edit{
+    color: #0A295A;
+    font-size: 18px;
+}
+
+.button-edit:hover{
+    color: #0E397B;
+}
+
 .button-primary-idle {
     color: white;
     background-color: #0A295A;
@@ -108,6 +117,9 @@ h6 {
 .button-idle-add {
     color: white;
     background-color: #0A295A;
+    border-radius: 10px;
+    text-align: center;
+    width: 100%;
     height: 40px;
     padding: 8px 12px;
     transition: background-color .3s, box-shadow .3s;
@@ -257,11 +269,21 @@ h6 {
     border-radius: 12px;
 }
 
+.nav-link:focus{
+    color: white;
+}
+
 .navbar-brand {
     color: white;
 }
 
 .nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+    text-decoration: none;
+    color: white;
+}
+
+.active {
     background-color: rgba(255, 255, 255, 0.15);
     text-decoration: none;
     color: white;

@@ -40,9 +40,19 @@
     <None Remove="Pages\Components\" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Model\" />
+    <Content Remove="Pages\Components\IssueEdit.razor" />
   </ItemGroup>
   <ItemGroup>
-    <Content Remove="Pages\Components\IssueEdit.razor" />
+    <_ContentIncludedByDefault Remove="Pages\Shared\_Layout.cshtml" />
+    <_ContentIncludedByDefault Remove="Pages\Shared\_LoginPartial.cshtml" />
+    <_ContentIncludedByDefault Remove="Pages\Shared\_ValidationScriptsPartial.cshtml" />
+    <_ContentIncludedByDefault Remove="Areas\Identity\Pages\Shared\_LoginPartial.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Pages\Shared\_Layout.cshtml" />
+    <UpToDateCheckInput Remove="Pages\Shared\_LoginPartial.cshtml" />
+    <UpToDateCheckInput Remove="Pages\Shared\_ValidationScriptsPartial.cshtml" />
+    <UpToDateCheckInput Remove="Pages\Shared\_LoginPartial.cshtml" />
+    <UpToDateCheckInput Remove="Pages\Shared\_ValidationScriptsPartial.cshtml" />
   </ItemGroup>
 </Project>

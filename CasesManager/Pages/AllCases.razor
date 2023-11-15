@@ -1,36 +1,46 @@
 ﻿@page "/allcases"
 @using CaseManagerLibrary.Models.IModels
 @using CaseManagerLibrary.Data.UOW
+@using CaseManagerLibrary.Utility
 @inject IUnitOfWork UnitOfWork
 @inject NavigationManager navigation
-@attribute [Authorize]
+@inject AuthenticationStateProvider AuthenticationStateProvider
+@using System.Security.Claims
 
 <AuthorizeView Roles="Administrator, User">
     <Authorized>
         <div class="container mt-5">
             <div class="d-flex justify-content-between mb-5">
                 <div>
-                    <h3>Zlecenia w toku</h3>
+                    <h3>Wszystkie zlecenia</h3>
                     <p>W sumie: @CasesList.Count()</p>
                 </div>
                 <div>
-                    <button class="btn button-primary-idle" @onclick="HandleButtonNewCase">Dodaje nowe zlecenie</button>
+                    @if (claimsPrincipal.IsInRole(SD.admin))
+                    {
+                        <button class="btn button-primary-idle d-flex align-items-center" @onclick="HandleButtonNewCase">
+                            <span class="material-symbols-outlined me-1">
+                                add
+                            </span>
+                            <span class="align-middle">Nowe zlecenie</span>
+                        </button>
+                    }
                 </div>
             </div>
             <div class="d-flex justify-content-start gap-3 mb-5">
                 <div class="form-group">
                     <label>Numer zlecenia</label>
-                    <input class="form-control" @bind-value="searchInputForCaseNumber" @bind-value:event="oninput" style="width: 300px;"/>
+                    <input class="form-control" @bind-value="searchInputForCaseNumber" @bind-value:event="oninput" style="width: 300px;" />
                 </div>
                 <div class="form-group">
                     <label>Zleceniodawca</label>
-                    <input class="form-control" @bind-value="searchInputForPrincipal" @bind-value:event="oninput" style="width: 300px;"/>
+                    <input class="form-control" @bind-value="searchInputForPrincipal" @bind-value:event="oninput" style="width: 300px;" />
                 </div>
                 <div class="form-group">
                     <label>Sortuj</label>
                     <select @bind="selectedSortOption" class="form-control" style="width: 300px;">
-                        <option value="newest">Najnowsze</option>
-                        <option value="oldest">Najstarsze</option>
+                        <option value="newest">Od najnowszych</option>
+                        <option value="oldest">Od najstarszych</option>
                     </select>
                 </div>
             </div>
@@ -49,7 +59,7 @@
                             <CardComponent Case="c" PreviousPage="/allcases"></CardComponent>
                         }
                     </div>
-                } 
+                }
                 else
                 {
                     <div class="row gap-3 justify-content-start">
@@ -58,8 +68,8 @@
                             <CardComponent Case="c" PreviousPage="/allcases"></CardComponent>
                         }
                     </div>
-                } 
-               
+                }
+
             </div>
         </div>
     </Authorized>
@@ -69,7 +79,9 @@
     private List<ICase> CasesList { get; set; } = new();
     private string searchInputForCaseNumber = "";
     private string searchInputForPrincipal = "";
-    private string selectedSortOption = "";
+    private string selectedSortOption = "newest";
+    private ClaimsPrincipal claimsPrincipal;
+    private AuthenticationState authenticationState;
 
     private List<ICase> filteredCasesList
     {
@@ -78,7 +90,7 @@
             var filteredList = CasesList
                 .Where(c => c.CaseNumber.ToLower().Contains(searchInputForCaseNumber.ToLower()))
                 .Where(c => c.Principal.ToLower().Contains(searchInputForPrincipal.ToLower()));
-            
+
             if (selectedSortOption == "oldest")
             {
                 filteredList = filteredList.OrderBy(c => c.DateOfReceipte);
@@ -90,12 +102,18 @@
             return filteredList.ToList();
         }
     }
-    
+
     private string PreviousPage = "allcases";
-    
+
     private void HandleButtonNewCase()
     {
         navigation.NavigateTo($"/caseform/{PreviousPage}");
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        authenticationState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+        claimsPrincipal = authenticationState.User;
     }
 
     protected override async Task OnParametersSetAsync()

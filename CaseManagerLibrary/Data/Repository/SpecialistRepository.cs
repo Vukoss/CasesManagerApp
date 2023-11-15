@@ -27,6 +27,20 @@ public class SpecialistRepository : ISpecialistRepository
         return output.FirstOrDefault();
     }
     
+    public async Task<Specialist> GetSpecialistById(string id)
+    {
+        string sql = "SELECT s.\"FirstName\", s.\"LastName\", s.\"LaboratoryId\" FROM public.\"AspNetUsers\" s WHERE \"Id\" = @Id";
+
+        var c = new
+        {
+            @Id = id
+        };
+
+        var output = await _db.LoadData<Specialist, dynamic>(sql, c, "Default");
+
+        return output.FirstOrDefault();
+    }
+    
     public async Task<List<Specialist>> GetAllSpecialists()
     {
         string sql = "SELECT u.\"Id\", u.\"FirstName\", u.\"LastName\" FROM public.\"AspNetUsers\" u;";

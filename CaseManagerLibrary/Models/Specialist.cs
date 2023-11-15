@@ -9,12 +9,16 @@ namespace CaseManagerLibrary.Models
     {
         [Required]
         public string FirstName { get; set; }
+        
         [Required]
         public string LastName { get; set; }
+        
         [Required]
         public int LaboratoryId { get; set; }
+        
         [ForeignKey("LaboratoryId")]
         public Laboratory Laboratory { get; set; }
+        
         [NotMapped]
         public string FullName
         {

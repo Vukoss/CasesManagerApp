@@ -42,7 +42,7 @@ namespace CaseManagerLibrary.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Laboratory",
+                name: "Laboratories",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
@@ -51,7 +51,7 @@ namespace CaseManagerLibrary.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Laboratory", x => x.Id);
+                    table.PrimaryKey("PK_Laboratories", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -80,10 +80,9 @@ namespace CaseManagerLibrary.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "text", nullable: false),
-                    Discriminator = table.Column<string>(type: "text", nullable: false),
-                    FirstName = table.Column<string>(type: "text", nullable: true),
-                    LastName = table.Column<string>(type: "text", nullable: true),
-                    LaboratoryId = table.Column<int>(type: "integer", nullable: true),
+                    FirstName = table.Column<string>(type: "text", nullable: false),
+                    LastName = table.Column<string>(type: "text", nullable: false),
+                    LaboratoryId = table.Column<int>(type: "integer", nullable: false),
                     UserName = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true),
                     Email = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true),
@@ -103,9 +102,9 @@ namespace CaseManagerLibrary.Migrations
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_AspNetUsers_Laboratory_LaboratoryId",
+                        name: "FK_AspNetUsers_Laboratories_LaboratoryId",
                         column: x => x.LaboratoryId,
-                        principalTable: "Laboratory",
+                        principalTable: "Laboratories",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -230,11 +229,19 @@ namespace CaseManagerLibrary.Migrations
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     CommentText = table.Column<string>(type: "character varying(500)", maxLength: 500, nullable: false),
-                    IssueId = table.Column<int>(type: "integer", nullable: false)
+                    CommentDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    IssueId = table.Column<int>(type: "integer", nullable: false),
+                    SpecialistId = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Comments", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Comments_AspNetUsers_SpecialistId",
+                        column: x => x.SpecialistId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Comments_Issues_IssueId",
                         column: x => x.IssueId,
@@ -291,6 +298,11 @@ namespace CaseManagerLibrary.Migrations
                 column: "IssueId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Comments_SpecialistId",
+                table: "Comments",
+                column: "SpecialistId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Issues_CaseId",
                 table: "Issues",
                 column: "CaseId");
@@ -335,7 +347,7 @@ namespace CaseManagerLibrary.Migrations
                 name: "Cases");
 
             migrationBuilder.DropTable(
-                name: "Laboratory");
+                name: "Laboratories");
         }
     }
 }
