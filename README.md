@@ -4,7 +4,7 @@ Application created to simplify process of adding cases, issues and comments by 
 
 ## Getting started
 
-This application has been created to use it with postgres database. To run it on your local maschine you have to provide the connection string and change in appsettings.json and in 
+This application has been created to use it with postgres database. To run it on your local maschine you have to provide the connection string and change it in appsettings.json and in 
 AppDbContext.cs files. After that in terminal use command: 
 - dotnet ef database update (for macOS),
 - Update-Database (for Windows) <br />
