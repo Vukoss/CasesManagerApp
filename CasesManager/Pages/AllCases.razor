@@ -1,5 +1,4 @@
 ﻿@page "/allcases"
-@using CaseManagerLibrary.Models.IModels
 @using CaseManagerLibrary.Data.UOW
 @using CaseManagerLibrary.Utility
 @inject IUnitOfWork UnitOfWork
@@ -76,14 +75,14 @@
 </AuthorizeView>
 
 @code{
-    private List<ICase> CasesList { get; set; } = new();
+    private List<Case> CasesList { get; set; } = new();
     private string searchInputForCaseNumber = "";
     private string searchInputForPrincipal = "";
     private string selectedSortOption = "newest";
     private ClaimsPrincipal claimsPrincipal;
     private AuthenticationState authenticationState;
 
-    private List<ICase> filteredCasesList
+    private List<Case> filteredCasesList
     {
         get
         {

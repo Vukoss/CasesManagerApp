@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace CaseManagerLibrary.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20231031170407_init")]
+    [Migration("20231128204054_init")]
     partial class init
     {
         /// <inheritdoc />
@@ -130,6 +130,18 @@ namespace CaseManagerLibrary.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Laboratories");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            LaboratoryName = "Chemia"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            LaboratoryName = "Biologia"
+                        });
                 });
 
             modelBuilder.Entity("CaseManagerLibrary.Models.Specialist", b =>
@@ -207,6 +219,27 @@ namespace CaseManagerLibrary.Migrations
                         .HasDatabaseName("UserNameIndex");
 
                     b.ToTable("AspNetUsers", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "34b710f8-d583-4183-af0d-f5cf3667e969",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "3a77280f-9c4b-4659-8d1a-915f03770b77",
+                            Email = "admin@admin.pl",
+                            EmailConfirmed = true,
+                            FirstName = "John",
+                            LaboratoryId = 1,
+                            LastName = "Doe",
+                            LockoutEnabled = false,
+                            NormalizedEmail = "ADMIN@ADMIN.PL",
+                            NormalizedUserName = "ADMIN@ADMIN.PL",
+                            PasswordHash = "AQAAAAIAAYagAAAAEFItt2zvylpoP3JscYZJo8Qwl0/Coh3qfU9qS/r+nItvD6hyc/K2cELdw1rcEfvlBA==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "e539a187-6ca6-495b-85ff-6c2a089c2a1f",
+                            TwoFactorEnabled = false,
+                            UserName = "admin@admin.pl"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -233,6 +266,14 @@ namespace CaseManagerLibrary.Migrations
                         .HasDatabaseName("RoleNameIndex");
 
                     b.ToTable("AspNetRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "be98e9fe-01e5-41bd-a572-43eb1d613cb8",
+                            Name = "Administrator",
+                            NormalizedName = "ADMINISTRATOR"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -320,6 +361,13 @@ namespace CaseManagerLibrary.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUserRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            UserId = "34b710f8-d583-4183-af0d-f5cf3667e969",
+                            RoleId = "be98e9fe-01e5-41bd-a572-43eb1d613cb8"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>

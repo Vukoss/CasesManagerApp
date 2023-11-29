@@ -1,10 +1,9 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
-using CaseManagerLibrary.Models.IModels;
 
 namespace CaseManagerLibrary.Models
 {
-    public class Case : ICase
+    public class Case
     {
         public int Id { get; set; }
         [Required]

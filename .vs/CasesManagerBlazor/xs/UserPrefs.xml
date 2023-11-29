@@ -1,14 +1,35 @@
 ﻿<Properties StartupConfiguration="{CC0A534F-4DBB-4247-AA3C-B80F0E5CEFD1}|https">
+  <MonoDevelop.Ide.ItemProperties.CasesManager PreferredExecutionTarget="/Applications/Google Chrome.app" />
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MultiItemStartupConfigurations />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="CasesManager/Pages/Components/IssueFormComponent.razor">
-    <Files>
-      <File FileName="CasesManager/Pages/Components/IssueFormComponent.razor" Line="32" Column="31" />
-    </Files>
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.Workbench>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="CasesManagerBlazor" expanded="True">
+            <Node name="CaseManagerLibrary" expanded="True">
+              <Node name="Models" expanded="True">
+                <Node name="IModels" expanded="True" />
+              </Node>
+            </Node>
+            <Node name="CasesManager">
+              <Node name="Model" expanded="True">
+                <Node name="DisplayCaseModel.cs" selected="True" />
+              </Node>
+              <Node name="Pages" expanded="True">
+                <Node name="Components" expanded="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State />
+      </Pad>
+    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.ItemProperties.CasesManager PreferredExecutionTarget="/Applications/Google Chrome.app" />
 </Properties>

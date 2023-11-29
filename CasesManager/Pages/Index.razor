@@ -1,6 +1,5 @@
 ﻿@page "/"
 @page "/index"
-@using CaseManagerLibrary.Models.IModels
 @using CaseManagerLibrary.Utility
 @using CaseManagerLibrary.Data.UOW
 @using System.Security.Claims
@@ -80,7 +79,7 @@
 
 
 @code{
-    private List<ICase> cases = new();
+    private List<Case> cases = new();
 
     private Specialist user = new();
 

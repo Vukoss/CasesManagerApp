@@ -1,5 +1,4 @@
 using CaseManagerLibrary.Models;
-using CaseManagerLibrary.Models.IModels;
 
 namespace CaseManagerLibrary.DataAccess;
 

@@ -1,11 +1,9 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using CaseManagerLibrary.Models.IModels;
 
 namespace CaseManagerLibrary.Models
 {
-    public class Comment : IComment
+    public class Comment
     {
         [Key]
         public int Id { get; set; }

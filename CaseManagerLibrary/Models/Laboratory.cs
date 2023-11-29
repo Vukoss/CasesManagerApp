@@ -1,5 +1,4 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace CaseManagerLibrary.Models
 {
@@ -9,6 +8,7 @@ namespace CaseManagerLibrary.Models
         public int Id { get; set; }
         [Required]
         public string LaboratoryName { get; set; }
+
         private List<Specialist> Specialists { get; set; }
     }
 }

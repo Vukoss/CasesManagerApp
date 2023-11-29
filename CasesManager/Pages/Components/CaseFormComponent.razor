@@ -1,6 +1,5 @@
 ﻿@page "/caseform/{PreviousPage}"
 @page "/editcase/{PreviousPage}/{id:int}"
-@using CaseManagerLibrary.Models.IModels
 @using CaseManagerLibrary.Data.UOW
 @inject IUnitOfWork UnitOfWork
 @inject NavigationManager navigation
@@ -76,7 +75,7 @@
     
     private bool showModal = false;
 
-    private ICase newCase = new Case();
+    private Case newCase = new Case();
 
     protected override async Task OnParametersSetAsync()
     {

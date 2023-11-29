@@ -1,5 +1,4 @@
-﻿@using CaseManagerLibrary.Models.IModels
-@using CaseManagerLibrary.Data.UOW
+﻿@using CaseManagerLibrary.Data.UOW
 @inject IUnitOfWork UnitOfWork
 @inject NavigationManager navigation
 
@@ -43,7 +42,7 @@
 
 @code {
     [Parameter]
-    public ICase Case { get; set; }
+    public Case Case { get; set; }
 
     [Parameter]
     public string PreviousPage { get; set; }

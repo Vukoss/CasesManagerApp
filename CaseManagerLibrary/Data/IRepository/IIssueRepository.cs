@@ -1,19 +1,18 @@
 using CaseManagerLibrary.Models;
-using CaseManagerLibrary.Models.IModels;
 
 namespace CaseManagerLibrary.DataAccess;
 
 public interface IIssueRepository
 {
-    Task AddNewIssue(IIssue newIssue);
+    Task AddNewIssue(Issue newIssue);
     
     Task<List<Issue>> GetAllCaseIssues(int caseId);
     
     Task DeleteIssue(int id);
 
-    Task<IIssue> GetIssueById(int id);
+    Task<Issue> GetIssueById(int id);
     
-    Task UpdateIssue(IIssue issue);
+    Task UpdateIssue(Issue issue);
 
     Task<List<Issue>> GetAllSpecialistsIssuesFromCurrentYear(string userId);
 }

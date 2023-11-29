@@ -1,7 +1,6 @@
 using CaseManagerLibrary.Data.DataAccess;
 using CaseManagerLibrary.DataAccess;
 using CaseManagerLibrary.Models;
-using CaseManagerLibrary.Models.IModels;
 
 namespace CaseManagerLibrary.Data.Repository;
 

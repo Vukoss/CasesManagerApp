@@ -31,16 +31,6 @@
                                     <span class="align-middle">Wszystkie zlecenia</span>
                                 </a>
                             </li>
-                            <li>
-                                <a class="nav-link d-flex align-items-center @(activeLink == "archive" ? "active" : "")"
-                                         @onclick='() => ActiveLinkToggle("archive")'
-                                         href="/archive">
-                                    <span class="material-symbols-outlined me-1">
-                                        inventory_2
-                                    </span>
-                                    <span class="align-middle">Archiwum zleceń</span>
-                                </a>
-                            </li>
                         </ul>
                         <div class="d-flex">
                             <form method="post" action="Identity/Account/Logout">

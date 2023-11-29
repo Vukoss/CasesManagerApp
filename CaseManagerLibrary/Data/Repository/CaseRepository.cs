@@ -1,8 +1,6 @@
 using CaseManagerLibrary.Data.DataAccess;
 using CaseManagerLibrary.DataAccess;
 using CaseManagerLibrary.Models;
-using CaseManagerLibrary.Models.IModels;
-using Microsoft.EntityFrameworkCore;
 
 namespace CaseManagerLibrary.Data.Repository;
 
@@ -13,7 +11,7 @@ public class CaseRepository : ICaseRepository
     {
         _db = db;
     }
-    public async Task AddNewCase(ICase newCase)
+    public async Task AddNewCase(Case newCase)
     {
         string sql = "INSERT INTO public.\"Cases\"(\"CaseNumber\", \"Principal\", \"DateOfReceipte\") VALUES(@CaseNumber, @Principal, @DateOfReceipte)";
         var p = new
@@ -25,7 +23,7 @@ public class CaseRepository : ICaseRepository
         await _db.SaveData(sql, p, "Default");
     }
 
-    public async Task<ICase> GetCaseById(int id)
+    public async Task<Case> GetCaseById(int id)
     {
         string sql = "SELECT c.\"Id\", c.\"CaseNumber\", c.\"Principal\", c.\"DateOfReceipte\" FROM public.\"Cases\" c WHERE c.\"Id\" = @Id;";
         var p = new
@@ -36,7 +34,7 @@ public class CaseRepository : ICaseRepository
         return output.FirstOrDefault();
     }
 
-    public async Task UpdateCase(ICase editCase)
+    public async Task UpdateCase(Case editCase)
     {
         var sql = "UPDATE public.\"Cases\" SET \"CaseNumber\" = @CaseNumber, \"Principal\" = @Principal, \"DateOfReceipte\" = @DateOfReceipte WHERE \"Id\" = @Id;";
         var p = new
@@ -49,16 +47,16 @@ public class CaseRepository : ICaseRepository
         await _db.SaveData(sql, p, "Default");
     }
     
-    public async Task<List<ICase>> GetAllCases()
+    public async Task<List<Case>> GetAllCases()
     {
         string sql = "SELECT \"Id\", \"CaseNumber\", \"Principal\", \"DateOfReceipte\" FROM public.\"Cases\";";
 
         var output = await _db.LoadData<Case, dynamic>(sql, new { }, "Default");
 
-        return output.ToList<ICase>();
+        return output.ToList<Case>();
     }
     
-    public async Task<List<ICase>> GetAllSpecialistsCases(string specialistId)
+    public async Task<List<Case>> GetAllSpecialistsCases(string specialistId)
     {
         string sql = "SELECT c.\"Id\", c.\"CaseNumber\", c.\"Principal\", c.\"DateOfReceipte\" FROM public.\"Issues\" i INNER JOIN public.\"Cases\" c ON i.\"CaseId\" = c.\"Id\" INNER JOIN public.\"AspNetUsers\" u ON i.\"SpecialistId\" = u.\"Id\" WHERE u.\"Id\" = @SpecialistId;";
         var c = new
@@ -68,7 +66,7 @@ public class CaseRepository : ICaseRepository
     
         var output = await _db.LoadData<Case, dynamic>(sql, c, "Default");
     
-        return output.ToList<ICase>();
+        return output.ToList<Case>();
     }
     
     public async Task DeleteCase(int id)

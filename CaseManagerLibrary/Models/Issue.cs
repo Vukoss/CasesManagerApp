@@ -1,12 +1,10 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using CaseManagerLibrary.Models.IModels;
 using CaseManagerLibrary.Utility;
 
 namespace CaseManagerLibrary.Models
 {
-    public class Issue : IIssue
+    public class Issue 
     {
         [Key]
         public int Id { get; set; }

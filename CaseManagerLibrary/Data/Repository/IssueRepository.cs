@@ -1,7 +1,6 @@
 using CaseManagerLibrary.Data.DataAccess;
 using CaseManagerLibrary.DataAccess;
 using CaseManagerLibrary.Models;
-using CaseManagerLibrary.Models.IModels;
 
 namespace CaseManagerLibrary.Data.Repository;
 
@@ -14,7 +13,7 @@ public class IssueRepository : IIssueRepository
         _db = db;
     }
     
-    public async Task AddNewIssue(IIssue newIssue)
+    public async Task AddNewIssue(Issue newIssue)
     {
         string sql = "INSERT INTO public.\"Issues\"(\"IssueNumber\", \"Status\", \"CaseId\", \"SpecialistId\") VALUES(@IssueNumber, @Status, @CaseId, @SpecialistId)";
         var p = new
@@ -64,7 +63,7 @@ public class IssueRepository : IIssueRepository
         await _db.SaveData(sql, p, "Default");
     }
     
-    public async Task<IIssue> GetIssueById(int id)
+    public async Task<Issue> GetIssueById(int id)
     {
         string sql = "SELECT i.\"Id\", i.\"IssueNumber\", i.\"Status\", i.\"CaseId\", i.\"SpecialistId\" FROM public.\"Issues\" i WHERE i.\"Id\" = @Id";
 
@@ -77,7 +76,7 @@ public class IssueRepository : IIssueRepository
         return output.FirstOrDefault();
     }
 
-    public async Task UpdateIssue(IIssue editIssue)
+    public async Task UpdateIssue(Issue editIssue)
     {
         string sql = "UPDATE public.\"Issues\" SET \"Id\" = @Id, \"IssueNumber\" = @IssueNumber, \"Status\" = @IssueStatus, \"CaseId\" = @CaseId, \"SpecialistId\" = @SpecialistId WHERE \"Id\" = @Id";
         var p = new

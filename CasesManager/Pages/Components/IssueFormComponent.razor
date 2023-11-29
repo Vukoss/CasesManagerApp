@@ -1,6 +1,5 @@
 ﻿@page "/issueform/{PreviousPage}/{caseId:int}"
 @page "/editissue/{PreviousPage}/{issueId:int}/{caseId:int}"
-@using CaseManagerLibrary.Models.IModels
 @using CaseManagerLibrary.Utility
 @using CaseManagerLibrary.Data.UOW
 @using System.Security.Claims
@@ -247,7 +246,7 @@
 
     private List<Issue> issues = new();
 
-    private IIssue issue = new DisplayIssueModel();
+    private Issue issue = new();
 
     private bool showModal = false;
 
